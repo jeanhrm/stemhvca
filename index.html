@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Logros de Aprendizaje STEAM — UGEL Huancavelica 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --navy:   #0D2240;
+  --navy2:  #1B3A6B;
+  --teal:   #0F7173;
+  --teal2:  #14A3A6;
+  --amber:  #E8A838;
+  --amber2: #F5C842;
+  --green:  #2E7D32;
+  --red:    #C62828;
+  --orange: #E65100;
+  --bg:     #060E1C;
+  --bg2:    #0B1628;
+  --bg3:    #112035;
+  --card:   #131F33;
+  --card2:  #1A2942;
+  --border: rgba(255,255,255,0.07);
+  --text:   #E8EDF5;
+  --muted:  #7A93B8;
+  --sat:    #22C55E;
+  --sat2:   #16A34A;
+  --proc:   #F59E0B;
+  --proc2:  #D97706;
+  --inicio: #EF4444;
+  --inicio2:#DC2626;
+  --previo: #94A3B8;
+  --ad:     #3B82F6;
+  --a:      #22C55E;
+  --b:      #F59E0B;
+  --c:      #EF4444;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  overflow-x:hidden;
+}
+
+/* ── SIDEBAR ───────────────────────────────── */
+.sidebar{
+  position:fixed;top:0;left:0;
+  width:220px;height:100vh;
+  background:var(--bg2);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  z-index:100;
+  padding:0;
+}
+.sidebar-logo{
+  padding:24px 20px 20px;
+  border-bottom:1px solid var(--border);
+}
+.sidebar-logo .badge{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--teal),var(--teal2));
+  color:#fff;font-family:'Syne',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  padding:3px 8px;border-radius:3px;margin-bottom:8px;
+}
+.sidebar-logo h2{
+  font-family:'Syne',sans-serif;font-size:13px;
+  font-weight:700;color:var(--text);line-height:1.3;
+}
+.sidebar-logo p{font-size:11px;color:var(--muted);margin-top:4px;}
+
+.nav-section{
+  padding:16px 12px 6px;
+  font-size:9px;font-weight:700;letter-spacing:2px;
+  color:var(--muted);text-transform:uppercase;
+}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 16px;margin:1px 8px;
+  border-radius:8px;cursor:pointer;
+  font-size:12.5px;color:var(--muted);
+  transition:all .2s;border:1px solid transparent;
+}
+.nav-item:hover{background:var(--bg3);color:var(--text);}
+.nav-item.active{
+  background:linear-gradient(135deg,rgba(15,113,115,.25),rgba(14,163,166,.1));
+  color:var(--teal2);border-color:rgba(15,113,115,.3);
+}
+.nav-item .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--muted);flex-shrink:0;
+  transition:all .2s;
+}
+.nav-item.active .dot{background:var(--teal2);box-shadow:0 0 8px var(--teal2);}
+
+.sidebar-footer{
+  margin-top:auto;padding:16px;
+  border-top:1px solid var(--border);
+  font-size:10px;color:var(--muted);text-align:center;
+}
+
+/* ── MAIN ──────────────────────────────────── */
+.main{margin-left:220px;min-height:100vh;}
+
+/* ── TOPBAR ────────────────────────────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(6,14,28,.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:14px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.topbar-title{
+  font-family:'Syne',sans-serif;font-size:15px;font-weight:700;
+  color:var(--text);
+}
+.topbar-meta{display:flex;gap:16px;align-items:center;}
+.chip{
+  padding:4px 12px;border-radius:20px;font-size:11px;font-weight:500;
+  background:rgba(255,255,255,.06);color:var(--muted);
+  border:1px solid var(--border);
+}
+.chip.active{background:rgba(15,113,115,.2);color:var(--teal2);border-color:rgba(20,163,166,.3);}
+
+/* ── SECTIONS ──────────────────────────────── */
+.section{
+  padding:32px;
+  display:none;
+  animation:fadeIn .3s ease;
+}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.section-header{
+  margin-bottom:28px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--border);
+}
+.section-header h1{
+  font-family:'Syne',sans-serif;font-size:22px;font-weight:800;
+  color:var(--text);margin-bottom:6px;
+}
+.section-header p{font-size:13px;color:var(--muted);line-height:1.6;max-width:700px;}
+
+/* ── KPI CARDS ─────────────────────────────── */
+.kpi-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:16px;margin-bottom:28px;
+}
+.kpi-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:20px;
+  position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+}
+.kpi-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.3);}
+.kpi-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent,var(--teal));
+}
+.kpi-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.kpi-value{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--text);line-height:1;}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:6px;}
+.kpi-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:11px;font-weight:600;margin-top:8px;
+  padding:3px 8px;border-radius:4px;
+}
+.kpi-badge.up{background:rgba(34,197,94,.15);color:var(--sat);}
+.kpi-badge.warn{background:rgba(245,158,11,.15);color:var(--proc);}
+.kpi-badge.alert{background:rgba(239,68,68,.15);color:var(--inicio);}
+
+/* ── GRID LAYOUTS ──────────────────────────── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:20px;}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:20px;}
+.col-span-2{grid-column:span 2;}
+.col-span-3{grid-column:span 3;}
+
+/* ── CHART CARD ────────────────────────────── */
+.chart-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:24px;
+  transition:box-shadow .2s;
+}
+.chart-card:hover{box-shadow:0 4px 24px rgba(0,0,0,.25);}
+.chart-title{
+  font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
+  color:var(--text);margin-bottom:4px;
+}
+.chart-sub{font-size:11px;color:var(--muted);margin-bottom:20px;}
+.chart-wrap{position:relative;height:240px;}
+.chart-wrap.tall{height:300px;}
+.chart-wrap.short{height:180px;}
+
+/* ── STACKED BAR (CSS) ─────────────────────── */
+.stack-bar{
+  display:flex;height:32px;border-radius:6px;overflow:hidden;
+  margin:6px 0;gap:1px;
+}
+.stack-seg{
+  transition:flex .6s cubic-bezier(.4,0,.2,1);
+  position:relative;display:flex;align-items:center;
+  justify-content:center;font-size:10px;font-weight:700;
+  color:rgba(255,255,255,.9);min-width:0;
+  overflow:hidden;
+}
+.stack-seg span{white-space:nowrap;overflow:hidden;}
+.seg-sat{background:var(--sat);}
+.seg-proc{background:var(--proc);}
+.seg-inicio{background:var(--inicio);}
+.seg-previo{background:var(--previo);}
+.seg-ad{background:var(--ad);}
+.seg-a{background:var(--a);}
+.seg-b{background:var(--b);}
+.seg-c{background:var(--c);}
+
+/* ── IIEE TABLE ────────────────────────────── */
+.data-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.data-table th{
+  padding:10px 14px;text-align:left;
+  font-size:10px;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;color:var(--muted);
+  border-bottom:1px solid var(--border);
+}
+.data-table td{
+  padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);
+  color:var(--text);
+}
+.data-table tr:hover td{background:rgba(255,255,255,.03);}
+.data-table .iiee-name{font-weight:600;color:var(--teal2);}
+
+.pill{
+  display:inline-block;padding:2px 10px;border-radius:20px;
+  font-size:10px;font-weight:700;
+}
+.pill-sat{background:rgba(34,197,94,.15);color:var(--sat);}
+.pill-proc{background:rgba(245,158,11,.15);color:var(--proc);}
+.pill-inicio{background:rgba(239,68,68,.15);color:var(--inicio);}
+.pill-previo{background:rgba(148,163,184,.15);color:var(--previo);}
+.pill-ad{background:rgba(59,130,246,.15);color:var(--ad);}
+.pill-a{background:rgba(34,197,94,.15);color:var(--a);}
+.pill-b{background:rgba(245,158,11,.15);color:var(--b);}
+.pill-c{background:rgba(239,68,68,.15);color:var(--c);}
+
+/* ── FILTERS ───────────────────────────────── */
+.filter-bar{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;
+}
+.filter-btn{
+  padding:6px 16px;border-radius:20px;border:1px solid var(--border);
+  background:var(--card);color:var(--muted);font-size:12px;
+  cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;
+}
+.filter-btn:hover{border-color:var(--teal);color:var(--teal2);}
+.filter-btn.active{
+  background:rgba(15,113,115,.2);color:var(--teal2);
+  border-color:rgba(20,163,166,.4);
+}
+
+/* ── LEGEND ────────────────────────────────── */
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
+.legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+
+/* ── IIEE SELECTOR ─────────────────────────── */
+.iiee-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.iiee-tab{
+  padding:8px 18px;border-radius:8px;border:1px solid var(--border);
+  background:var(--card);color:var(--muted);font-size:12px;
+  cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;
+  font-weight:500;
+}
+.iiee-tab:hover{border-color:var(--amber);color:var(--amber2);}
+.iiee-tab.active{
+  background:rgba(232,168,56,.15);color:var(--amber2);
+  border-color:rgba(232,168,56,.4);
+}
+
+/* ── SCORE RING ────────────────────────────── */
+.ring-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.ring-svg{width:100px;height:100px;}
+.ring-label{font-size:11px;color:var(--muted);text-align:center;}
+.ring-value{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;text-anchor:middle;dominant-baseline:central;}
+
+/* ── COMPARISON TABLE ──────────────────────── */
+.compare-badge{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;
+}
+.compare-badge.better{background:rgba(34,197,94,.15);color:var(--sat);}
+.compare-badge.worse{background:rgba(239,68,68,.15);color:var(--inicio);}
+
+/* ── INSIGHT BOXES ─────────────────────────── */
+.insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px;}
+.insight{
+  background:var(--card2);border:1px solid var(--border);
+  border-left:3px solid var(--accent,var(--teal));
+  border-radius:8px;padding:16px;
+}
+.insight-title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.insight-text{font-size:12px;color:var(--muted);line-height:1.6;}
+
+/* ── HERO BANNER ───────────────────────────── */
+.hero{
+  background:linear-gradient(135deg,var(--navy2) 0%,var(--teal) 60%,var(--teal2) 100%);
+  border-radius:16px;padding:32px;margin-bottom:28px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:300px;height:300px;border-radius:50%;
+  background:rgba(255,255,255,.05);
+}
+.hero::after{
+  content:'';position:absolute;bottom:-60px;right:80px;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(255,255,255,.04);
+}
+.hero h1{
+  font-family:'Syne',sans-serif;font-size:26px;font-weight:800;
+  color:#fff;margin-bottom:8px;position:relative;
+}
+.hero p{font-size:13px;color:rgba(255,255,255,.75);max-width:600px;line-height:1.6;position:relative;}
+.hero-stats{
+  display:flex;gap:32px;margin-top:24px;position:relative;
+}
+.hero-stat-val{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:#fff;}
+.hero-stat-lab{font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;}
+
+/* ── SCROLLBAR ─────────────────────────────── */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--card2);border-radius:3px;}
+
+/* ── TOOLTIP ───────────────────────────────── */
+.tooltip{
+  position:fixed;background:var(--navy);border:1px solid var(--teal);
+  padding:8px 12px;border-radius:8px;font-size:11px;color:var(--text);
+  pointer-events:none;z-index:999;display:none;box-shadow:0 4px 20px rgba(0,0,0,.5);
+}
+
+/* ── PROGRESS BAR ──────────────────────────── */
+.prog-row{display:flex;align-items:center;gap:12px;margin:8px 0;}
+.prog-label{font-size:12px;color:var(--muted);width:110px;flex-shrink:0;}
+.prog-bar-wrap{flex:1;height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;}
+.prog-bar{height:100%;border-radius:4px;transition:width .8s cubic-bezier(.4,0,.2,1);}
+.prog-val{font-size:11px;font-weight:600;width:40px;text-align:right;flex-shrink:0;}
+
+/* ── EREHUA SECTION ────────────────────────── */
+.erehua-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:20px;
+}
+.erehua-iiee-name{
+  font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
+  color:var(--amber2);margin-bottom:4px;
+}
+.erehua-grado{font-size:11px;color:var(--muted);margin-bottom:14px;}
+.area-row{margin:10px 0;}
+.area-name{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:500;}
+
+@media(max-width:900px){
+  .sidebar{width:60px;}
+  .sidebar-logo h2,.sidebar-logo p,.nav-section,.nav-item span{display:none;}
+  .main{margin-left:60px;}
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+  .col-span-2,.col-span-3{grid-column:span 1;}
+  .grid-5{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="badge">DREH HVCA</div>
+    <h2>Logros de Aprendizaje</h2>
+    <p>STEAM 2025</p>
+  </div>
+  <div class="nav-section">Análisis</div>
+  <div class="nav-item active" onclick="showSection('overview',this)">
+    <div class="dot"></div><span>Resumen General</span>
+  </div>
+  <div class="nav-item" onclick="showSection('iiee',this)">
+    <div class="dot"></div><span>Por Institución</span>
+  </div>
+  <div class="nav-item" onclick="showSection('areas',this)">
+    <div class="dot"></div><span>Por Área Curricular</span>
+  </div>
+  <div class="nav-item" onclick="showSection('grados',this)">
+    <div class="dot"></div><span>Por Grado</span>
+  </div>
+  <div class="nav-section">Evaluación Externa</div>
+  <div class="nav-item" onclick="showSection('erehua',this)">
+    <div class="dot"></div><span>EREHUA 2025</span>
+  </div>
+  <div class="nav-item" onclick="showSection('comparativo',this)">
+    <div class="dot"></div><span>STEAM vs No-STEAM</span>
+  </div>
+  <div class="sidebar-footer">UGEL Huancavelica<br/>Jean C Ordoñez</div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="topbar-title">Resumen General</div>
+    <div class="topbar-meta">
+      <span class="chip active">5 IIEE STEAM</span>
+      <span class="chip">4.°–6.° Grado</span>
+      <span class="chip">Mat · Com · CyT</span>
+      <span class="chip">2025</span>
+    </div>
+  </div>
+
+  <!-- ══ OVERVIEW ══════════════════════════════ -->
+  <div class="section active" id="sec-overview">
+    <div class="hero">
+      <h1>Impacto STEAM en los Aprendizajes</h1>
+      <p>Análisis de logros de aprendizaje en 5 instituciones educativas con enfoque STEAM, 4.° a 6.° grado, en las áreas de Matemática, Comunicación y Ciencia y Tecnología — UGEL Huancavelica 2025.</p>
+      <div class="hero-stats">
+        <div><div class="hero-stat-val">1,986</div><div class="hero-stat-lab">Estudiantes evaluados</div></div>
+        <div><div class="hero-stat-val">96.5%</div><div class="hero-stat-lab">AD+A promedio STEAM</div></div>
+        <div><div class="hero-stat-val">0.4%</div><div class="hero-stat-lab">Nivel C promedio</div></div>
+        <div><div class="hero-stat-val">5 IIEE</div><div class="hero-stat-lab">Instituciones analizadas</div></div>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--accent:var(--ad)">
+        <div class="kpi-label">Logro Destacado (AD)</div>
+        <div class="kpi-value">19.7%</div>
+        <div class="kpi-sub">Promedio 5 IIEE STEAM</div>
+        <div class="kpi-badge up">▲ +4.5 pp vs UGEL</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--a)">
+        <div class="kpi-label">Logrado (A)</div>
+        <div class="kpi-value">75.1%</div>
+        <div class="kpi-sub">Promedio 5 IIEE STEAM</div>
+        <div class="kpi-badge up">↑ Nivel satisfactorio</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--b)">
+        <div class="kpi-label">En Proceso (B)</div>
+        <div class="kpi-value">4.9%</div>
+        <div class="kpi-sub">Promedio 5 IIEE STEAM</div>
+        <div class="kpi-badge warn">⚠ Requiere atención</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--c)">
+        <div class="kpi-label">En Inicio (C)</div>
+        <div class="kpi-value">0.4%</div>
+        <div class="kpi-sub">Promedio 5 IIEE STEAM</div>
+        <div class="kpi-badge up">▼ −7.4 pp vs No-STEAM</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--teal)">
+        <div class="kpi-label">Mayor AD</div>
+        <div class="kpi-value">25.0%</div>
+        <div class="kpi-sub">I.E. 36002</div>
+        <div class="kpi-badge up">★ Líder AD</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--amber)">
+        <div class="kpi-label">Mayor matrícula</div>
+        <div class="kpi-value">721</div>
+        <div class="kpi-sub">I.E. 37001 – PEPIN</div>
+        <div class="kpi-badge up">22.3% AD</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Distribución de Niveles — 5 IIEE STEAM</div>
+        <div class="chart-sub">Porcentaje acumulado de todos los registros</div>
+        <div class="chart-wrap"><canvas id="chartPieOverall"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Niveles de Logro por Institución Educativa</div>
+        <div class="chart-sub">% AD, A, B, C — comparativo</div>
+        <div class="chart-wrap"><canvas id="chartBarIIEE"></canvas></div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-bottom:20px;">
+      <div class="chart-title">Perfil de Niveles por IIEE — Barras Apiladas</div>
+      <div class="chart-sub">Distribución visual de AD / A / B / C</div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--ad)"></div>AD – Logro Destacado</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--a)"></div>A – Logrado</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--b)"></div>B – En Proceso</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--c)"></div>C – En Inicio</div>
+      </div>
+      <div id="stackedBars"></div>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight" style="--accent:var(--ad)">
+        <div class="insight-title">🏆 I.E. 36002 — Líder en AD</div>
+        <div class="insight-text">Con 25.0% de Logro Destacado y solo 1.9% en Proceso, es la institución más equilibrada entre áreas. Candidata a escuela modelo STEAM de la UGEL.</div>
+      </div>
+      <div class="insight" style="--accent:var(--proc)">
+        <div class="insight-title">⚠ I.E. 36009 — Atención en B</div>
+        <div class="insight-text">El 9.0% en nivel B es el más alto del grupo STEAM, concentrado en 5.° grado (14.8%). Requiere refuerzo pedagógico focalizado.</div>
+      </div>
+      <div class="insight" style="--accent:var(--inicio)">
+        <div class="insight-title">🔴 I.E. 36036 — En consolidación</div>
+        <div class="insight-text">Con 9.6% AD y 1.3% C, la implementación STEAM aún está madurando. El 4.° grado concentra los indicadores más críticos (C: 2.6%).</div>
+      </div>
+      <div class="insight" style="--accent:var(--teal)">
+        <div class="insight-title">📈 Efecto STEAM acumulativo</div>
+        <div class="insight-text">En 3 de 5 IIEE, el %AD en 6.° es notablemente mayor que en 4.°, sugiriendo que el impacto se profundiza con los años de exposición al modelo.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ POR IIEE ════════════════════════════ -->
+  <div class="section" id="sec-iiee">
+    <div class="section-header">
+      <h1>Análisis por Institución Educativa</h1>
+      <p>Explora el perfil detallado de cada IIEE: niveles de logro por área curricular y grado escolar.</p>
+    </div>
+
+    <div class="iiee-tabs" id="iieeTabs">
+      <button class="iiee-tab active" onclick="selectIIEE('37001',this)">37001 — PEPIN</button>
+      <button class="iiee-tab" onclick="selectIIEE('36001',this)">36001 — LAS VERDES</button>
+      <button class="iiee-tab" onclick="selectIIEE('36002',this)">36002 — AZULES</button>
+      <button class="iiee-tab" onclick="selectIIEE('36009',this)">36009 — JOSE ORDAYA</button>
+      <button class="iiee-tab" onclick="selectIIEE('36036',this)">36036 — YAULI</button>
+    </div>
+
+    <div id="iieeDetail"></div>
+  </div>
+
+  <!-- ══ POR ÁREA ═══════════════════════════ -->
+  <div class="section" id="sec-areas">
+    <div class="section-header">
+      <h1>Análisis por Área Curricular</h1>
+      <p>Comparación de los niveles de logro en Matemática, Comunicación y Ciencia y Tecnología en las 5 IIEE STEAM.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterArea('all',this)">Todas las IIEE</button>
+      <button class="filter-btn" onclick="filterArea('37001',this)">37001</button>
+      <button class="filter-btn" onclick="filterArea('36001',this)">36001</button>
+      <button class="filter-btn" onclick="filterArea('36002',this)">36002</button>
+      <button class="filter-btn" onclick="filterArea('36009',this)">36009</button>
+      <button class="filter-btn" onclick="filterArea('36036',this)">36036</button>
+    </div>
+
+    <div class="grid-3">
+      <div class="chart-card">
+        <div class="chart-title">Matemática — AD por IIEE</div>
+        <div class="chart-sub">% Logro Destacado</div>
+        <div class="chart-wrap short"><canvas id="chartMatAD"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Comunicación — AD por IIEE</div>
+        <div class="chart-sub">% Logro Destacado</div>
+        <div class="chart-wrap short"><canvas id="chartComAD"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Ciencia y Tecnología — AD por IIEE</div>
+        <div class="chart-sub">% Logro Destacado</div>
+        <div class="chart-wrap short"><canvas id="chartCytAD"></canvas></div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-bottom:20px;">
+      <div class="chart-title">Comparativo AD+A por Área y IIEE</div>
+      <div class="chart-sub">Tasa de logro satisfactorio (AD+A) — objetivo: ≥95%</div>
+      <div class="chart-wrap tall"><canvas id="chartAreaComparison"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Nivel B+C por Área — Alerta Pedagógica</div>
+      <div class="chart-sub">Porcentaje de estudiantes que no alcanzan el nivel esperado</div>
+      <div class="chart-wrap"><canvas id="chartAlerta"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ══ POR GRADO ══════════════════════════ -->
+  <div class="section" id="sec-grados">
+    <div class="section-header">
+      <h1>Análisis por Grado Escolar</h1>
+      <p>Evolución de logros desde 4.° a 6.° grado. El patrón ascendente en AD evidencia el efecto acumulativo del enfoque STEAM.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Efecto Acumulativo STEAM — %AD por Grado</div>
+        <div class="chart-sub">Evolución de Logro Destacado: 4.° → 5.° → 6.°</div>
+        <div class="chart-wrap tall"><canvas id="chartGradoAD"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Nivel C por Grado — Alerta</div>
+        <div class="chart-sub">% En Inicio por grado y IIEE</div>
+        <div class="chart-wrap tall"><canvas id="chartGradoC"></canvas></div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-bottom:20px;">
+      <div class="chart-title">Perfil completo AD/A/B/C por Grado — Todas las IIEE</div>
+      <div class="chart-sub">Barras apiladas por grado</div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--ad)"></div>AD</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--a)"></div>A</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--b)"></div>B</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--c)"></div>C</div>
+      </div>
+      <div id="stackedGrados"></div>
+    </div>
+  </div>
+
+  <!-- ══ EREHUA ══════════════════════════════ -->
+  <div class="section" id="sec-erehua">
+    <div class="section-header">
+      <h1>Evaluación Regional EREHUA 2025</h1>
+      <p>Resultados de la evaluación estandarizada externa en 4.° y 6.° grado. Escala: Satisfactorio / En Proceso / En Inicio / Previo al Inicio.</p>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--accent:var(--sat)">
+        <div class="kpi-label">Mejor Satisfactorio 4.°</div>
+        <div class="kpi-value">36001</div>
+        <div class="kpi-sub">28.4% prom. 3 áreas</div>
+        <div class="kpi-badge up">▲ Sobre UGEL</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--amber)">
+        <div class="kpi-label">Mayor salto 4.°→6.°</div>
+        <div class="kpi-value">36001</div>
+        <div class="kpi-sub">+29 pp en Matemática</div>
+        <div class="kpi-badge up">🚀 Efecto acumulativo</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--inicio)">
+        <div class="kpi-label">Mayor reto 6.° Grado</div>
+        <div class="kpi-value">36009</div>
+        <div class="kpi-sub">67.8% Inicio en Matemática</div>
+        <div class="kpi-badge alert">⚠ Brecha interna-externa</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--teal)">
+        <div class="kpi-label">Ref. UGEL Satisf. 4.°</div>
+        <div class="kpi-value">23.4%</div>
+        <div class="kpi-sub">Promedio Matemática UGEL</div>
+        <div class="kpi-badge warn">— Referencia</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="chart-card">
+        <div class="chart-title">EREHUA 4.° Grado — % Satisfactorio por Área</div>
+        <div class="chart-sub">Matemática · Comunicación · CyT vs. Promedio UGEL</div>
+        <div class="chart-wrap tall"><canvas id="chartErehua4"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">EREHUA 6.° Grado — % Satisfactorio por Área</div>
+        <div class="chart-sub">Matemática · Comunicación · CyT vs. Promedio UGEL</div>
+        <div class="chart-wrap tall"><canvas id="chartErehua6"></canvas></div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-bottom:20px;">
+      <div class="chart-title">EREHUA — Nivel Inicio por IIEE y Grado (Alerta)</div>
+      <div class="chart-sub">Porcentaje de estudiantes En Inicio — mayor = más crítico</div>
+      <div class="chart-wrap"><canvas id="chartErehuaInicio"></canvas></div>
+    </div>
+
+    <!-- EREHUA stacked bars per IIEE -->
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-title">EREHUA 4.° — Perfil completo por IIEE</div>
+        <div class="chart-sub">Sat / Proceso / Inicio / Previo — Matemática</div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--sat)"></div>Satisfactorio</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--proc)"></div>En Proceso</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--inicio)"></div>En Inicio</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--previo)"></div>Previo</div>
+        </div>
+        <div id="erehua4Stacked"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">EREHUA 6.° — Perfil completo por IIEE</div>
+        <div class="chart-sub">Sat / Proceso / Inicio / Previo — Matemática</div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--sat)"></div>Satisfactorio</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--proc)"></div>En Proceso</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--inicio)"></div>En Inicio</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--previo)"></div>Previo</div>
+        </div>
+        <div id="erehua6Stacked"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ COMPARATIVO ═══════════════════════ -->
+  <div class="section" id="sec-comparativo">
+    <div class="section-header">
+      <h1>STEAM vs. Instituciones sin STEAM</h1>
+      <p>Contraste de los niveles de logro entre las 5 IIEE STEAM y 4 instituciones de alta matrícula sin enfoque STEAM — las de mayor porcentaje C en la UGEL.</p>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--accent:var(--sat)">
+        <div class="kpi-label">%C Promedio STEAM</div>
+        <div class="kpi-value">0.4%</div>
+        <div class="kpi-sub">5 IIEE STEAM</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--inicio)">
+        <div class="kpi-label">%C Promedio No-STEAM</div>
+        <div class="kpi-value">5.3%</div>
+        <div class="kpi-sub">4 IIEE comparación</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--amber)">
+        <div class="kpi-label">Brecha máxima C</div>
+        <div class="kpi-value">+5.3 pp</div>
+        <div class="kpi-sub">36293 vs. grupo STEAM</div>
+      </div>
+      <div class="kpi-card" style="--accent:var(--teal)">
+        <div class="kpi-label">Reducción relativa C</div>
+        <div class="kpi-value">92.5%</div>
+        <div class="kpi-sub">Menos riesgo de no-logro</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="chart-card">
+        <div class="chart-title">%AD — STEAM vs No-STEAM</div>
+        <div class="chart-sub">Logro Destacado por institución</div>
+        <div class="chart-wrap tall"><canvas id="chartCompAD"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">%C — STEAM vs No-STEAM</div>
+        <div class="chart-sub">En Inicio por institución — alerta crítica</div>
+        <div class="chart-wrap tall"><canvas id="chartCompC"></canvas></div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-bottom:24px;">
+      <div class="chart-title">Perfil AD/A/B/C Completo — STEAM vs No-STEAM</div>
+      <div class="chart-sub">Comparación lado a lado</div>
+      <div class="chart-wrap tall"><canvas id="chartCompFull"></canvas></div>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight" style="--accent:var(--sat)">
+        <div class="insight-title">✅ Impacto STEAM en nivel C</div>
+        <div class="insight-text">Las IIEE STEAM muestran un promedio de C de 0.4% frente al 5.3% del grupo sin STEAM — una reducción relativa del 92.5% en el riesgo de no-logro.</div>
+      </div>
+      <div class="insight" style="--accent:var(--ad)">
+        <div class="insight-title">📊 Brecha estadística significativa</div>
+        <div class="insight-text">La I.E. 36293 sin STEAM tiene 5.3% de nivel C con apenas 0.5% AD, mientras las IIEE STEAM promedian 19.7% AD y 0.4% C — una diferencia sistémica.</div>
+      </div>
+      <div class="insight" style="--accent:var(--orange)">
+        <div class="insight-title">⚠ Limitaciones metodológicas</div>
+        <div class="insight-text">La brecha no puede atribuirse exclusivamente al STEAM. Intervienen factores como el NSE familiar, la formación docente y la gestión directiva. Sin embargo, la consistencia en 5 IIEE refuerza la hipótesis del efecto positivo.</div>
+      </div>
+      <div class="insight" style="--accent:var(--teal)">
+        <div class="insight-title">🎯 Recomendación</div>
+        <div class="insight-text">Se recomienda iniciar acompañamiento pedagógico STEAM en las IIEE 36293, 36367, 36390 y 36350, dado el alto diferencial en nivel C respecto al grupo STEAM.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ── DATA ────────────────────────────────────────────────────────
+// DATA CORREGIDA (promedio por competencia por área)
+const IIEE_DATA = {
+  '37001': {
+    nombre: '37001 — PEPIN', total: 721,
+    ad: 22.0, a: 74.9, b: 3.1, c: 0.1,
+    areas: {
+      'Matemática':   {ad:25.6,a:71.3,b:3.1,c:0.0},
+      'Comunicación': {ad:24.5,a:72.6,b:2.8,c:0.0},
+      'CyT':          {ad:15.8,a:80.7,b:3.3,c:0.1},
+    },
+    grados: {
+      'Cuarto': {ad:17.0,a:77.5,b:5.3,c:0.2,total:269},
+      'Quinto': {ad:15.4,a:81.2,b:3.3,c:0.0,total:210},
+      'Sexto':  {ad:33.2,a:66.5,b:0.3,c:0.0,total:242},
+    }
+  },
+  '36001': {
+    nombre: '36001 — LAS VERDES', total: 386,
+    ad: 23.8, a: 72.2, b: 3.9, c: 0.0,
+    areas: {
+      'Matemática':   {ad:23.9,a:72.5,b:3.5,c:0.0},
+      'Comunicación': {ad:26.0,a:67.8,b:6.2,c:0.0},
+      'CyT':          {ad:21.6,a:76.3,b:2.1,c:0.0},
+    },
+    grados: {
+      'Cuarto': {ad:25.4,a:73.3,b:1.3,c:0.0,total:131},
+      'Quinto': {ad:25.9,a:66.9,b:7.1,c:0.0,total:126},
+      'Sexto':  {ad:20.2,a:76.4,b:3.4,c:0.0,total:129},
+    }
+  },
+  '36002': {
+    nombre: '36002 — AZULES', total: 228,
+    ad: 25.2, a: 73.1, b: 1.8, c: 0.0,
+    areas: {
+      'Matemática':   {ad:23.6,a:73.7,b:2.8,c:0.0},
+      'Comunicación': {ad:26.9,a:72.0,b:1.2,c:0.0},
+      'CyT':          {ad:25.0,a:73.6,b:1.5,c:0.0},
+    },
+    grados: {
+      'Cuarto': {ad:18.0,a:76.1,b:5.9,c:0.0,total:69},
+      'Quinto': {ad:22.6,a:77.4,b:0.0,c:0.0,total:77},
+      'Sexto':  {ad:33.5,a:66.5,b:0.0,c:0.0,total:82},
+    }
+  },
+  '36009': {
+    nombre: '36009 — JOSE ORDAYA', total: 450,
+    ad: 17.7, a: 72.9, b: 8.9, c: 0.6,
+    areas: {
+      'Matemática':   {ad:17.9,a:71.0,b:10.8,c:0.4},
+      'Comunicación': {ad:18.4,a:73.7,b:7.5,c:0.4},
+      'CyT':          {ad:16.8,a:73.9,b:8.4,c:0.9},
+    },
+    grados: {
+      'Cuarto': {ad:25.9,a:62.8,b:11.3,c:0.0,total:140},
+      'Quinto': {ad:14.4,a:69.6,b:14.3,c:1.7,total:155},
+      'Sexto':  {ad:13.6,a:85.2,b:1.3,c:0.0,total:155},
+    }
+  },
+  '36036': {
+    nombre: '36036 — YAULI', total: 201,
+    ad: 9.6, a: 82.5, b: 6.6, c: 1.3,
+    areas: {
+      'Matemática':   {ad:10.9,a:80.3,b:7.9,c:1.0},
+      'Comunicación': {ad:10.3,a:81.9,b:5.8,c:2.0},
+      'CyT':          {ad:7.7,a:85.4,b:6.0,c:1.0},
+    },
+    grados: {
+      'Cuarto': {ad:1.8,a:82.2,b:13.4,c:2.7,total:62},
+      'Quinto': {ad:12.5,a:80.0,b:7.5,c:0.0,total:65},
+      'Sexto':  {ad:13.6,a:85.1,b:0.0,c:1.4,total:74},
+    }
+  }
+};
+
+const COMP_DATA = [
+  {iiee:'36293',grupo:'Sin STEAM',total:95,ad:0.5,a:91.3,b:3.0,c:5.2},
+  {iiee:'36367',grupo:'Sin STEAM',total:30,ad:7.8,a:78.1,b:8.5,c:5.7},
+  {iiee:'36390',grupo:'Sin STEAM',total:60,ad:6.0,a:80.0,b:9.1,c:4.9},
+  {iiee:'36350',grupo:'Sin STEAM',total:40,ad:14.7,a:76.9,b:3.3,c:5.0},
+];
+
+const EREHUA_DATA = {
+  '37001': {
+    g4: {mat:{sat:32.69,proc:53.85,inicio:13.08,previo:0.38}, com:{sat:28.35,proc:55.17,inicio:16.48,previo:0}, cyt:{sat:24.23,proc:60.77,inicio:13.85,previo:1.15}},
+    g6: {mat:{sat:13.97,proc:43.23,inicio:40.17,previo:2.63}, com:{sat:21.03,proc:66.09,inicio:12.45,previo:0.43}, cyt:{sat:33.33,proc:53.07,inicio:13.16,previo:0.44}}
+  },
+  '36001': {
+    g4: {mat:{sat:33.07,proc:39.37,inicio:26.77,previo:0.79}, com:{sat:26.45,proc:52.07,inicio:19.83,previo:1.65}, cyt:{sat:25.83,proc:50.83,inicio:20.83,previo:2.51}},
+    g6: {mat:{sat:62.50,proc:37.50,inicio:0,previo:0}, com:{sat:25.00,proc:57.26,inicio:14.52,previo:3.22}, cyt:{sat:57.85,proc:38.84,inicio:3.31,previo:0}}
+  },
+  '36002': {
+    g4: {mat:{sat:25.37,proc:52.24,inicio:22.39,previo:0}, com:{sat:0,proc:69.57,inicio:21.74,previo:7.25}, cyt:{sat:55.38,proc:27.69,inicio:16.92,previo:0}},
+    g6: {mat:{sat:0,proc:52.56,inicio:46.15,previo:1.29}, com:{sat:10.67,proc:65.33,inicio:21.33,previo:2.67}, cyt:{sat:43.24,proc:45.95,inicio:10.81,previo:0}}
+  },
+  '36009': {
+    g4: {mat:{sat:12.61,proc:55.46,inicio:26.89,previo:5.04}, com:{sat:16.53,proc:44.63,inicio:32.23,previo:6.61}, cyt:{sat:20.80,proc:50.40,inicio:25.60,previo:3.20}},
+    g6: {mat:{sat:23.78,proc:23.78,inicio:67.83,previo:5.59}, com:{sat:7.53,proc:67.12,inicio:22.60,previo:2.75}, cyt:{sat:17.36,proc:53.47,inicio:27.08,previo:2.09}}
+  },
+  '36036': {
+    g4: {mat:{sat:10.71,proc:57.14,inicio:30.36,previo:1.79}, com:{sat:0,proc:57.14,inicio:33.93,previo:8.93}, cyt:{sat:0,proc:55.56,inicio:40.74,previo:3.70}},
+    g6: {mat:{sat:8.57,proc:52.86,inicio:35.71,previo:2.86}, com:{sat:17.91,proc:56.72,inicio:20.90,previo:4.47}, cyt:{sat:13.43,proc:61.19,inicio:23.88,previo:1.50}}
+  }
+};
+
+const UGEL_REF = {
+  g4: {mat:{sat:27.65,proc:48.54,inicio:21.52}, com:{sat:19.14,proc:50.21,inicio:25.78}, cyt:{sat:22.94,proc:50.71,inicio:23.93}},
+  g6: {mat:{sat:11.49,proc:36.51,inicio:45.11}, com:{sat:19.13,proc:54.45,inicio:23.12}, cyt:{sat:23.36,proc:42.75,inicio:30.37}}
+};
+
+const COLORS_CHART = {
+  ad:'#3B82F6', a:'#22C55E', b:'#F59E0B', c:'#EF4444',
+  sat:'#22C55E', proc:'#F59E0B', inicio:'#EF4444', previo:'#94A3B8',
+  teal:'#14A3A6', navy:'#1B3A6B', amber:'#E8A838'
+};
+const IIEE_COLORS = ['#14A3A6','#3B82F6','#22C55E','#F59E0B','#A855F7'];
+const IIEE_KEYS = ['37001','36001','36002','36009','36036'];
+
+// ── Chart defaults ──────────────────────────────────────────────
+Chart.defaults.color = '#7A93B8';
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.font.size = 11;
+
+const chartOpts = (extra={}) => ({
+  responsive:true, maintainAspectRatio:false,
+  plugins:{legend:{display:false},tooltip:{
+    backgroundColor:'#0D2240',borderColor:'#0F7173',borderWidth:1,
+    titleColor:'#E8EDF5',bodyColor:'#7A93B8',padding:10,
+  }},
+  scales:{
+    x:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#7A93B8'}},
+    y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#7A93B8'}},
+  },
+  ...extra
+});
+
+// ── SECTION NAVIGATION ──────────────────────────────────────────
+const SECTION_TITLES = {
+  overview:'Resumen General', iiee:'Por Institución',
+  areas:'Por Área Curricular', grados:'Por Grado',
+  erehua:'EREHUA 2025', comparativo:'STEAM vs No-STEAM'
+};
+function showSection(id, el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  el.classList.add('active');
+  document.getElementById('topbar-title').textContent = SECTION_TITLES[id];
+}
+
+// ── STACKED BAR HTML ─────────────────────────────────────────────
+function makeStackedBar(container, rows, type='internal'){
+  const el = document.getElementById(container);
+  if(!el) return;
+  el.innerHTML = '';
+  rows.forEach(row => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'margin:8px 0;display:flex;align-items:center;gap:10px;';
+
+    const label = document.createElement('div');
+    label.style.cssText = 'width:140px;font-size:12px;color:#7A93B8;flex-shrink:0;';
+    label.textContent = row.label;
+
+    const bar = document.createElement('div');
+    bar.style.cssText = 'flex:1;height:28px;border-radius:6px;overflow:hidden;display:flex;gap:1px;';
+
+    const segs = type==='internal'
+      ? [{val:row.ad,cls:'seg-ad',label:'AD'},{val:row.a,cls:'seg-a',label:'A'},{val:row.b,cls:'seg-b',label:'B'},{val:row.c,cls:'seg-c',label:'C'}]
+      : [{val:row.sat,cls:'seg-sat',label:'Sat'},{val:row.proc,cls:'seg-proc',label:'Proc'},{val:row.inicio,cls:'seg-inicio',label:'Ini'},{val:row.previo,cls:'seg-previo',label:'Prev'}];
+
+    segs.forEach(s=>{
+      if(!s.val || s.val<0.5) return;
+      const seg = document.createElement('div');
+      seg.className = 'stack-seg '+s.cls;
+      seg.style.flex = s.val;
+      seg.title = `${s.label}: ${s.val.toFixed(1)}%`;
+      if(s.val>6) seg.innerHTML = `<span>${s.val.toFixed(0)}%</span>`;
+      bar.appendChild(seg);
+    });
+
+    const pct = document.createElement('div');
+    pct.style.cssText = 'font-size:11px;color:#7A93B8;width:50px;text-align:right;flex-shrink:0;';
+    if(type==='internal') pct.textContent = (row.ad+row.a).toFixed(1)+'% ✓';
+    else pct.textContent = (row.sat||0).toFixed(1)+'%';
+
+    wrap.appendChild(label);
+    wrap.appendChild(bar);
+    wrap.appendChild(pct);
+    el.appendChild(wrap);
+  });
+}
+
+// ── INIT CHARTS ─────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  // PIE OVERALL
+  new Chart(document.getElementById('chartPieOverall'), {
+    type:'doughnut',
+    data:{
+      labels:['AD – Logro Destacado','A – Logrado','B – En Proceso','C – En Inicio'],
+      datasets:[{
+        data:[19.7,75.0,4.9,0.4],
+        backgroundColor:['#3B82F6','#22C55E','#F59E0B','#EF4444'],
+        borderWidth:0, hoverOffset:8
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,cutout:'65%',
+      plugins:{
+        legend:{display:true,position:'right',labels:{color:'#7A93B8',font:{size:11},padding:12,boxWidth:10}},
+        tooltip:{backgroundColor:'#0D2240',borderColor:'#0F7173',borderWidth:1,titleColor:'#E8EDF5',bodyColor:'#7A93B8'}
+      }
+    }
+  });
+
+  // BAR IIEE OVERVIEW
+  new Chart(document.getElementById('chartBarIIEE'),{
+    type:'bar',
+    data:{
+      labels:IIEE_KEYS,
+      datasets:[
+        {label:'AD',data:IIEE_KEYS.map(k=>IIEE_DATA[k].ad),backgroundColor:'#3B82F6',borderRadius:3},
+        {label:'A',data:IIEE_KEYS.map(k=>IIEE_DATA[k].a),backgroundColor:'#22C55E',borderRadius:3},
+        {label:'B',data:IIEE_KEYS.map(k=>IIEE_DATA[k].b),backgroundColor:'#F59E0B',borderRadius:3},
+        {label:'C',data:IIEE_KEYS.map(k=>IIEE_DATA[k].c),backgroundColor:'#EF4444',borderRadius:3},
+      ]
+    },
+    options:{...chartOpts(),plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:10},padding:10,boxWidth:8}}}}
+  });
+
+  // STACKED BARS OVERVIEW
+  makeStackedBar('stackedBars', IIEE_KEYS.map(k=>{
+    const d=IIEE_DATA[k]; return {label:d.nombre.split('—')[0].trim(), ad:d.ad, a:d.a, b:d.b, c:d.c};
+  }));
+
+  // AREA CHARTS
+  const areas = ['Matemática','Comunicación','CyT'];
+  const chartIds = {Matemática:'chartMatAD',Comunicación:'chartComAD',CyT:'chartCytAD'};
+  areas.forEach(area=>{
+    new Chart(document.getElementById(chartIds[area]),{
+      type:'bar',
+      data:{
+        labels:IIEE_KEYS,
+        datasets:[{
+          label:'% AD',
+          data:IIEE_KEYS.map(k=>IIEE_DATA[k].areas[area].ad),
+          backgroundColor:IIEE_COLORS,borderRadius:4,
+        }]
+      },
+      options:chartOpts()
+    });
+  });
+
+  // AD+A AREA COMPARISON
+  new Chart(document.getElementById('chartAreaComparison'),{
+    type:'bar',
+    data:{
+      labels:IIEE_KEYS,
+      datasets:areas.map((a,i)=>({
+        label:a,
+        data:IIEE_KEYS.map(k=>{const d=IIEE_DATA[k].areas[a]; return d.ad+d.a;}),
+        backgroundColor:['rgba(59,130,246,.8)','rgba(34,197,94,.8)','rgba(20,163,166,.8)'][i],
+        borderRadius:3
+      }))
+    },
+    options:{
+      ...chartOpts(),
+      plugins:{
+        legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:11},padding:10,boxWidth:8}},
+        tooltip:{...chartOpts().plugins.tooltip},
+        annotation:{annotations:{line1:{type:'line',yMin:95,yMax:95,borderColor:'rgba(255,255,255,.3)',borderDash:[4,4],label:{content:'Meta 95%',display:true,color:'#fff'}}}}
+      }
+    }
+  });
+
+  // ALERTA B+C
+  new Chart(document.getElementById('chartAlerta'),{
+    type:'bar',
+    data:{
+      labels:IIEE_KEYS,
+      datasets:areas.map((a,i)=>({
+        label:a,
+        data:IIEE_KEYS.map(k=>{const d=IIEE_DATA[k].areas[a]; return d.b+d.c;}),
+        backgroundColor:['rgba(239,68,68,.8)','rgba(245,158,11,.8)','rgba(168,85,247,.8)'][i],
+        borderRadius:3
+      }))
+    },
+    options:{...chartOpts(),plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:11},padding:10,boxWidth:8}}}}
+  });
+
+  // GRADO AD
+  const gradoKeys=['Cuarto','Quinto','Sexto'];
+  new Chart(document.getElementById('chartGradoAD'),{
+    type:'line',
+    data:{
+      labels:gradoKeys,
+      datasets:IIEE_KEYS.map((k,i)=>({
+        label:k,
+        data:gradoKeys.map(g=>IIEE_DATA[k].grados[g].ad),
+        borderColor:IIEE_COLORS[i],backgroundColor:'transparent',
+        borderWidth:2,pointRadius:5,pointBackgroundColor:IIEE_COLORS[i],tension:.3
+      }))
+    },
+    options:{...chartOpts(),plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:10},padding:8,boxWidth:8}}}}
+  });
+
+  // GRADO C
+  new Chart(document.getElementById('chartGradoC'),{
+    type:'bar',
+    data:{
+      labels:gradoKeys,
+      datasets:IIEE_KEYS.map((k,i)=>({
+        label:k,
+        data:gradoKeys.map(g=>IIEE_DATA[k].grados[g].c),
+        backgroundColor:IIEE_COLORS[i]+'99',borderRadius:3,
+      }))
+    },
+    options:{...chartOpts(),plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:10},padding:8,boxWidth:8}}}}
+  });
+
+  // STACKED GRADOS
+  const gradoRows=[];
+  IIEE_KEYS.forEach(k=>{
+    gradoKeys.forEach(g=>{
+      const d=IIEE_DATA[k].grados[g];
+      gradoRows.push({label:`${k} · ${g.slice(0,3)}`, ad:d.ad, a:d.a, b:d.b, c:d.c});
+    });
+  });
+  makeStackedBar('stackedGrados', gradoRows);
+
+  // EREHUA 4
+  const eKeys=IIEE_KEYS;
+  new Chart(document.getElementById('chartErehua4'),{
+    type:'bar',
+    data:{
+      labels:eKeys,
+      datasets:[
+        {label:'Matemática',data:eKeys.map(k=>EREHUA_DATA[k].g4.mat.sat),backgroundColor:'rgba(59,130,246,.8)',borderRadius:3},
+        {label:'Comunicación',data:eKeys.map(k=>EREHUA_DATA[k].g4.com.sat),backgroundColor:'rgba(34,197,94,.8)',borderRadius:3},
+        {label:'CyT',data:eKeys.map(k=>EREHUA_DATA[k].g4.cyt.sat),backgroundColor:'rgba(20,163,166,.8)',borderRadius:3},
+        {label:'Prom. UGEL Mat',data:eKeys.map(()=>27.65),type:'line',borderColor:'#fff',borderDash:[4,4],borderWidth:1.5,pointRadius:0,backgroundColor:'transparent'},
+      ]
+    },
+    options:{...chartOpts(),plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:10},padding:8,boxWidth:8}}}}
+  });
+
+  // EREHUA 6
+  new Chart(document.getElementById('chartErehua6'),{
+    type:'bar',
+    data:{
+      labels:eKeys,
+      datasets:[
+        {label:'Matemática',data:eKeys.map(k=>EREHUA_DATA[k].g6.mat.sat),backgroundColor:'rgba(59,130,246,.8)',borderRadius:3},
+        {label:'Comunicación',data:eKeys.map(k=>EREHUA_DATA[k].g6.com.sat),backgroundColor:'rgba(34,197,94,.8)',borderRadius:3},
+        {label:'CyT',data:eKeys.map(k=>EREHUA_DATA[k].g6.cyt.sat),backgroundColor:'rgba(20,163,166,.8)',borderRadius:3},
+        {label:'Prom. UGEL Mat',data:eKeys.map(()=>11.49),type:'line',borderColor:'#fff',borderDash:[4,4],borderWidth:1.5,pointRadius:0,backgroundColor:'transparent'},
+      ]
+    },
+    options:{...chartOpts(),plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:10},padding:8,boxWidth:8}}}}
+  });
+
+  // EREHUA INICIO
+  new Chart(document.getElementById('chartErehuaInicio'),{
+    type:'bar',
+    data:{
+      labels:eKeys,
+      datasets:[
+        {label:'4.° Grado — Matemática',data:eKeys.map(k=>EREHUA_DATA[k].g4.mat.inicio),backgroundColor:'rgba(239,68,68,.6)',borderRadius:3},
+        {label:'6.° Grado — Matemática',data:eKeys.map(k=>EREHUA_DATA[k].g6.mat.inicio),backgroundColor:'rgba(239,68,68,.9)',borderRadius:3},
+      ]
+    },
+    options:{...chartOpts(),plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:10},padding:8,boxWidth:8}}}}
+  });
+
+  // EREHUA stacked 4to
+  makeStackedBar('erehua4Stacked', eKeys.map(k=>({
+    label:k, ...EREHUA_DATA[k].g4.mat
+  })), 'erehua');
+
+  // EREHUA stacked 6to
+  makeStackedBar('erehua6Stacked', eKeys.map(k=>({
+    label:k, ...EREHUA_DATA[k].g6.mat
+  })), 'erehua');
+
+  // COMP AD
+  const allIiee=[...IIEE_KEYS,...COMP_DATA.map(d=>d.iiee)];
+  const allAD=[...IIEE_KEYS.map(k=>IIEE_DATA[k].ad),...COMP_DATA.map(d=>d.ad)];
+  const allColors=[...IIEE_KEYS.map((_,i)=>IIEE_COLORS[i]),...COMP_DATA.map(()=>'rgba(239,68,68,.6)')];
+
+  new Chart(document.getElementById('chartCompAD'),{
+    type:'bar',
+    data:{labels:allIiee,datasets:[{label:'% AD',data:allAD,backgroundColor:allColors,borderRadius:4}]},
+    options:chartOpts()
+  });
+
+  const allC=[...IIEE_KEYS.map(k=>IIEE_DATA[k].c),...COMP_DATA.map(d=>d.c)];
+  new Chart(document.getElementById('chartCompC'),{
+    type:'bar',
+    data:{labels:allIiee,datasets:[{label:'% C',data:allC,backgroundColor:allColors,borderRadius:4}]},
+    options:chartOpts()
+  });
+
+  // COMP FULL
+  new Chart(document.getElementById('chartCompFull'),{
+    type:'bar',
+    data:{
+      labels:allIiee,
+      datasets:[
+        {label:'AD',data:[...IIEE_KEYS.map(k=>IIEE_DATA[k].ad),...COMP_DATA.map(d=>d.ad)],backgroundColor:'rgba(59,130,246,.85)',borderRadius:3},
+        {label:'A',data:[...IIEE_KEYS.map(k=>IIEE_DATA[k].a),...COMP_DATA.map(d=>d.a)],backgroundColor:'rgba(34,197,94,.85)',borderRadius:3},
+        {label:'B',data:[...IIEE_KEYS.map(k=>IIEE_DATA[k].b),...COMP_DATA.map(d=>d.b)],backgroundColor:'rgba(245,158,11,.85)',borderRadius:3},
+        {label:'C',data:[...IIEE_KEYS.map(k=>IIEE_DATA[k].c),...COMP_DATA.map(d=>d.c)],backgroundColor:'rgba(239,68,68,.85)',borderRadius:3},
+      ]
+    },
+    options:{
+      ...chartOpts({scales:{x:{stacked:true,grid:{color:'rgba(255,255,255,.05)'}},y:{stacked:true,grid:{color:'rgba(255,255,255,.05)'}}}}),
+      plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:10},padding:8,boxWidth:8}}}
+    }
+  });
+
+  // Init IIEE detail
+  selectIIEE('37001', document.querySelector('.iiee-tab.active'));
+});
+
+// ── IIEE DETAIL ─────────────────────────────────────────────────
+let activeIIEEChart = null;
+function selectIIEE(key, btn){
+  document.querySelectorAll('.iiee-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  const d = IIEE_DATA[key];
+  const container = document.getElementById('iieeDetail');
+
+  container.innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--accent:#3B82F6">
+        <div class="kpi-label">Total Evaluados</div>
+        <div class="kpi-value">${d.total.toLocaleString()}</div>
+        <div class="kpi-sub">4.°–6.° Grado · 3 Áreas</div>
+      </div>
+      <div class="kpi-card" style="--accent:#3B82F6">
+        <div class="kpi-label">AD – Logro Destacado</div>
+        <div class="kpi-value">${d.ad}%</div>
+        <div class="kpi-sub">${Math.round(d.total*d.ad/100)} estudiantes</div>
+      </div>
+      <div class="kpi-card" style="--accent:#22C55E">
+        <div class="kpi-label">A – Logrado</div>
+        <div class="kpi-value">${d.a}%</div>
+        <div class="kpi-sub">${Math.round(d.total*d.a/100)} estudiantes</div>
+      </div>
+      <div class="kpi-card" style="--accent:#F59E0B">
+        <div class="kpi-label">B – En Proceso</div>
+        <div class="kpi-value">${d.b}%</div>
+        <div class="kpi-sub">${Math.round(d.total*d.b/100)} estudiantes</div>
+        ${d.b>8?'<div class="kpi-badge warn">⚠ Requiere atención</div>':''}
+      </div>
+      <div class="kpi-card" style="--accent:#EF4444">
+        <div class="kpi-label">C – En Inicio</div>
+        <div class="kpi-value">${d.c}%</div>
+        <div class="kpi-sub">${Math.round(d.total*d.c/100)} estudiantes</div>
+        ${d.c>1?'<div class="kpi-badge alert">🔴 Alerta crítica</div>':'<div class="kpi-badge up">✓ Bajo control</div>'}
+      </div>
+      <div class="kpi-card" style="--accent:#14A3A6">
+        <div class="kpi-label">AD+A (Satisfactorio)</div>
+        <div class="kpi-value">${(d.ad+d.a).toFixed(1)}%</div>
+        <div class="kpi-sub">Meta: ≥ 95%</div>
+        ${(d.ad+d.a)>=95?'<div class="kpi-badge up">✓ Meta alcanzada</div>':'<div class="kpi-badge warn">⚠ Debajo de meta</div>'}
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Niveles por Área Curricular</div>
+        <div class="chart-sub">AD / A / B / C</div>
+        <div class="chart-wrap"><canvas id="iieeAreaChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Evolución por Grado Escolar</div>
+        <div class="chart-sub">%AD por grado — efecto acumulativo</div>
+        <div class="chart-wrap"><canvas id="iieeGradoChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-bottom:16px;">
+      <div class="chart-title">Perfil Completo por Área — Barras Apiladas</div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--ad)"></div>AD</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--a)"></div>A</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--b)"></div>B</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--c)"></div>C</div>
+      </div>
+      <div id="iieeAreaStacked"></div>
+    </div>
+  `;
+
+  // Render charts
+  const areas = ['Matemática','Comunicación','CyT'];
+  new Chart(document.getElementById('iieeAreaChart'),{
+    type:'bar',
+    data:{
+      labels:areas,
+      datasets:[
+        {label:'AD',data:areas.map(a=>d.areas[a].ad),backgroundColor:'#3B82F6',borderRadius:3},
+        {label:'A',data:areas.map(a=>d.areas[a].a),backgroundColor:'#22C55E',borderRadius:3},
+        {label:'B',data:areas.map(a=>d.areas[a].b),backgroundColor:'#F59E0B',borderRadius:3},
+        {label:'C',data:areas.map(a=>d.areas[a].c),backgroundColor:'#EF4444',borderRadius:3},
+      ]
+    },
+    options:{...chartOpts(),plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:10},padding:8,boxWidth:8}}}}
+  });
+
+  const grados=['Cuarto','Quinto','Sexto'];
+  new Chart(document.getElementById('iieeGradoChart'),{
+    type:'line',
+    data:{
+      labels:grados,
+      datasets:[
+        {label:'%AD',data:grados.map(g=>d.grados[g].ad),borderColor:'#3B82F6',backgroundColor:'rgba(59,130,246,.1)',borderWidth:2.5,pointRadius:5,fill:true,tension:.3},
+        {label:'%C',data:grados.map(g=>d.grados[g].c),borderColor:'#EF4444',backgroundColor:'rgba(239,68,68,.05)',borderWidth:2,pointRadius:4,fill:true,tension:.3},
+      ]
+    },
+    options:{...chartOpts(),plugins:{legend:{display:true,position:'top',labels:{color:'#7A93B8',font:{size:10},padding:8,boxWidth:8}}}}
+  });
+
+  makeStackedBar('iieeAreaStacked', areas.map(a=>({
+    label:a, ad:d.areas[a].ad, a:d.areas[a].a, b:d.areas[a].b, c:d.areas[a].c
+  })));
+}
+</script>
+</body>
+</html>
