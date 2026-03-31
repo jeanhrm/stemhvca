@@ -3,865 +3,1616 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Logros de Aprendizaje STEAM — UGEL Huancavelica 2025</title>
+<title>EREHUA Historico 2024–2025 | STEAM vs No-STEAM</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+/* ── TOKENS ──────────────────────────────────────────────────── */
 :root{
-  --navy:#0D2240;--navy2:#1B3A6B;--teal:#0F7173;--teal2:#14A3A6;
-  --amber:#E8A838;--green:#2E7D32;--red:#C62828;--orange:#E65100;
-  --bg:#060E1C;--bg2:#0B1628;--bg3:#112035;
-  --card:#131F33;--card2:#1A2942;--border:rgba(255,255,255,0.07);
-  --text:#E8EDF5;--muted:#7A93B8;
-  --ad:#3B82F6;--a:#22C55E;--b:#F59E0B;--c:#EF4444;
-  --sat:#22C55E;--proc:#F59E0B;--inicio:#EF4444;--previo:#94A3B8;
+  /* ── UNICEF PALETTE ───────────────────────────────────────── */
+  /* Backgrounds — very light blue-white tones */
+  --white:#FFFFFF;
+  --bg:#EDF4FA;        /* page bg: pale blue-white */
+  --bg2:#E2EFF8;       /* alt section bg: slightly deeper */
+  --bg3:#EDF4FA;
+  --card:#FFFFFF;      /* cards stay white */
+  --card2:#F0F7FC;     /* subtle card variant */
+
+  /* Typography — deep navy instead of warm brown */
+  --ink:#00234B;       /* UNICEF dark navy */
+  --ink2:#1A4A7A;      /* medium navy */
+  --muted:#4A7099;     /* muted blue-grey */
+  --line:#C5DDEF;      /* dividers: light blue */
+
+  /* STEAM / No-STEAM group colors */
+  --steam:#0072BA;     /* UNICEF primary blue */
+  --steam-lt:#E0F0FA;
+  --steam-mid:#4A9FD4;
+  --nosteam:#D4722A;
+  --nosteam-lt:#FDF0E6;
+  --nosteam-mid:#E8935A;
+
+  /* EREHUA performance levels */
+  --sat:#4CAF50;
+  --sat-lt:#E8F5E9;
+  --proc:#FFC107;
+  --proc-lt:#FFF8E1;
+  --ini:#E53935;
+  --ini-lt:#FFEBEE;
+  --prev:#78909C;
+  --prev-lt:#ECEFF1;
+
+  /* UNICEF accent */
+  --unicef-cyan:#1CABE2;
+  --unicef-navy:#00234B;
+  --unicef-blue:#0072BA;
+  --amber:#0072BA;     /* repoint amber → unicef blue for accents */
+  --brown:#00234B;
+  --brown-lt:#0072BA;
+
+  --r:12px;
+  --shadow:0 2px 12px rgba(0,35,75,.08);
+  --shadow-lg:0 8px 32px rgba(0,35,75,.14);
 }
+
+/* ── RESET ───────────────────────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',Arial,sans-serif;font-size:14px;overflow-x:hidden;}
-/* SIDEBAR */
-.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;}
-.sidebar-logo{padding:24px 20px 20px;border-bottom:1px solid var(--border);}
-.sidebar-logo .badge{display:inline-block;background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff;font-family:'Syne',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;padding:3px 8px;border-radius:3px;margin-bottom:8px;}
-.sidebar-logo h2{font-family:'Syne',Arial,sans-serif;font-size:13px;font-weight:700;color:var(--text);line-height:1.3;}
-.sidebar-logo p{font-size:11px;color:var(--muted);margin-top:4px;}
-.nav-section{padding:16px 12px 6px;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;}
-.nav-item{display:flex;align-items:center;gap:10px;padding:9px 16px;margin:1px 8px;border-radius:8px;cursor:pointer;font-size:12.5px;color:var(--muted);transition:all .2s;border:1px solid transparent;}
-.nav-item:hover{background:var(--bg3);color:var(--text);}
-.nav-item.active{background:linear-gradient(135deg,rgba(15,113,115,.25),rgba(14,163,166,.1));color:var(--teal2);border-color:rgba(15,113,115,.3);}
-.nav-item .dot{width:6px;height:6px;border-radius:50%;background:var(--muted);flex-shrink:0;transition:all .2s;}
-.nav-item.active .dot{background:var(--teal2);box-shadow:0 0 8px var(--teal2);}
-.sidebar-footer{margin-top:auto;padding:16px;border-top:1px solid var(--border);font-size:10px;color:var(--muted);text-align:center;}
-/* MAIN */
-.main{margin-left:220px;min-height:100vh;}
-.topbar{position:sticky;top:0;z-index:50;background:rgba(6,14,28,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;}
-.topbar-title{font-family:'Syne',Arial,sans-serif;font-size:15px;font-weight:700;color:var(--text);}
-.topbar-meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-.chip{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:500;background:rgba(255,255,255,.06);color:var(--muted);border:1px solid var(--border);}
-.chip.hi{background:rgba(15,113,115,.2);color:var(--teal2);border-color:rgba(20,163,166,.3);}
-/* SECTIONS */
-.section{padding:32px;display:none;animation:fadeIn .3s ease;}
-.section.active{display:block;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.sec-header{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
-.sec-header h1{font-family:'Syne',Arial,sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px;}
-.sec-header p{font-size:13px;color:var(--muted);line-height:1.6;max-width:700px;}
-/* HERO */
-.hero{background:linear-gradient(135deg,var(--navy2),var(--teal) 60%,var(--teal2));border-radius:16px;padding:32px;margin-bottom:28px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.05);}
-.hero h1{font-family:'Syne',Arial,sans-serif;font-size:24px;font-weight:800;color:#fff;margin-bottom:8px;position:relative;}
-.hero p{font-size:13px;color:rgba(255,255,255,.75);max-width:600px;line-height:1.6;position:relative;}
-.hero-stats{display:flex;gap:32px;margin-top:24px;position:relative;flex-wrap:wrap;}
-.hero-stat-val{font-family:'Syne',Arial,sans-serif;font-size:30px;font-weight:800;color:#fff;}
-.hero-stat-lab{font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;}
-/* KPI */
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-bottom:28px;}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;position:relative;overflow:hidden;transition:transform .2s;}
-.kpi:hover{transform:translateY(-2px);}
-.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--kc,var(--teal));}
-.kpi-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
-.kpi-val{font-family:'Syne',Arial,sans-serif;font-size:26px;font-weight:800;color:var(--text);line-height:1;}
-.kpi-sub{font-size:11px;color:var(--muted);margin-top:6px;}
-.kpi-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;margin-top:8px;padding:3px 8px;border-radius:4px;}
-.tag-up{background:rgba(34,197,94,.15);color:var(--a);}
-.tag-warn{background:rgba(245,158,11,.15);color:var(--b);}
-.tag-alert{background:rgba(239,68,68,.15);color:var(--c);}
-/* GRID */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:20px;}
-/* CHART CARD */
-.cc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;}
-.cc-title{font-family:'Syne',Arial,sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
-.cc-sub{font-size:11px;color:var(--muted);margin-bottom:16px;}
-.cv{width:100%;}
-/* LEGEND */
-.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
-.leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
-.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
-/* STACKED BAR */
-.stack-row{display:flex;align-items:center;gap:10px;margin:7px 0;}
-.stack-lbl{font-size:12px;color:var(--muted);width:150px;flex-shrink:0;}
-.stack-bar{flex:1;height:26px;border-radius:5px;overflow:hidden;display:flex;gap:1px;}
-.stack-seg{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:rgba(255,255,255,.9);transition:flex .7s cubic-bezier(.4,0,.2,1);overflow:hidden;min-width:0;}
-.stack-seg span{white-space:nowrap;overflow:hidden;}
-.s-ad{background:var(--ad)}.s-a{background:var(--a)}.s-b{background:var(--b)}.s-c{background:var(--c)}
-.s-sat{background:var(--sat)}.s-proc{background:var(--proc)}.s-ini{background:var(--inicio)}.s-prev{background:var(--previo)}
-.stack-pct{font-size:11px;color:var(--muted);width:52px;text-align:right;flex-shrink:0;}
-/* IIEE TABS */
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
-.tab{padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',Arial,sans-serif;font-weight:500;}
-.tab:hover{border-color:var(--amber);color:var(--amber);}
-.tab.active{background:rgba(232,168,56,.15);color:var(--amber);border-color:rgba(232,168,56,.4);}
-/* INSIGHT */
-.insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:20px;}
-.insight{background:var(--card2);border:1px solid var(--border);border-left:3px solid var(--ic,var(--teal));border-radius:8px;padding:16px;}
-.insight-t{font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;}
-.insight-b{font-size:12px;color:var(--muted);line-height:1.6;}
-/* SCROLLBAR */
-::-webkit-scrollbar{width:5px;height:5px;}
-::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:var(--card2);border-radius:3px;}
-/* CANVAS charts via JS */
-canvas{display:block;}
-@media(max-width:860px){
-  .sidebar{width:56px;}
-  .sidebar-logo h2,.sidebar-logo p,.nav-section,.nav-item span{display:none;}
-  .main{margin-left:56px;}
-  .g2,.g3{grid-template-columns:1fr;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  font-size:15px;
+  line-height:1.6;
 }
+
+/* ── SIDEBAR NAV ─────────────────────────────────────────────── */
+.sidenav{
+  position:fixed;top:0;left:0;width:56px;height:100vh;
+  background:#00234B;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;
+  align-items:center;padding:20px 0;gap:6px;z-index:200;
+}
+.sidenav a{
+  width:36px;height:36px;border-radius:8px;display:flex;
+  align-items:center;justify-content:center;font-size:11px;
+  font-weight:700;color:rgba(255,255,255,.4);text-decoration:none;
+  letter-spacing:.5px;transition:all .2s;
+}
+.sidenav a:hover,.sidenav a.active{background:rgba(255,255,255,.12);color:#fff;}
+.sidenav-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.15);margin:4px 0;}
+
+/* ── MAIN ────────────────────────────────────────────────────── */
+.main{margin-left:56px;}
+
+/* ── HERO ────────────────────────────────────────────────────── */
+.hero{
+  background:linear-gradient(135deg,#00234B 0%,#00447C 45%,#1A6FAF 80%,#1A8DB8 100%);
+  color:#fff;
+  padding:72px 64px 60px;
+  position:relative;overflow:hidden;
+  border-bottom:3px solid #1CABE2;
+}
+.hero-bg-text{
+  position:absolute;right:-20px;top:50%;transform:translateY(-50%);
+  font-family:'Fraunces',serif;font-size:200px;font-weight:800;
+  color:rgba(255,255,255,.03);line-height:1;pointer-events:none;
+  white-space:nowrap;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;padding:5px 14px;font-size:12px;
+  color:rgba(255,255,255,.65);letter-spacing:.5px;margin-bottom:24px;
+}
+.hero-eyebrow span{width:6px;height:6px;border-radius:50%;background:#1CABE2;display:block;}
+.hero h1{
+  font-family:'Fraunces',serif;font-size:52px;font-weight:800;
+  line-height:1.08;margin-bottom:20px;max-width:720px;
+}
+.hero h1 em{font-style:italic;color:#1CABE2;}
+.hero-sub{
+  font-size:16px;color:rgba(255,255,255,.6);max-width:560px;
+  line-height:1.7;margin-bottom:48px;
+}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,auto);gap:0;
+  width:fit-content;border:1px solid rgba(28,171,226,.3);border-radius:var(--r);overflow:hidden;
+}
+.hstat{
+  padding:20px 32px;border-right:1px solid rgba(28,171,226,.25);
+  text-align:center;
+}
+.hstat:last-child{border:none;}
+.hstat-v{font-family:'Fraunces',serif;font-size:36px;font-weight:800;color:#fff;line-height:1;}
+.hstat-l{font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.3px;}
+.hstat-tag{font-size:11px;color:#6AAFD6;font-weight:600;margin-top:3px;}
+
+/* ── SECTION HEADERS ─────────────────────────────────────────── */
+.page-section{padding:56px 64px;}
+.page-section:nth-child(even){background:var(--bg);}
+
+.sec-eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--unicef-cyan);margin-bottom:12px;
+}
+.sec-eyebrow::before{
+  content:'';width:24px;height:2px;
+  background:currentColor;border-radius:1px;
+}
+.sec-title{
+  font-family:'Fraunces',serif;font-size:34px;font-weight:800;
+  color:var(--unicef-navy);line-height:1.2;margin-bottom:10px;
+}
+.sec-desc{
+  font-size:14px;color:var(--muted);max-width:640px;
+  line-height:1.7;margin-bottom:36px;
+}
+
+/* ── COMPARISON STRIP ────────────────────────────────────────── */
+.cmp-strip{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:24px;
+  background:var(--card);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:28px 32px;
+  margin-bottom:24px;
+}
+.cmp-side{display:flex;flex-direction:column;}
+.cmp-side.right{align-items:flex-end;text-align:right;}
+.cmp-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:8px;
+}
+.cmp-tag.steam{background:#E0F0FA;color:var(--unicef-blue);}
+.cmp-tag.nosteam{background:var(--nosteam-lt);color:#C2541A;}
+.cmp-val{
+  font-family:'Fraunces',serif;font-size:52px;font-weight:800;line-height:1;
+}
+.cmp-val.steam{color:var(--steam);}
+.cmp-val.nosteam{color:var(--nosteam);}
+.cmp-sub{font-size:13px;color:var(--muted);margin-top:6px;}
+.cmp-center{text-align:center;}
+.cmp-year{
+  font-family:'Fraunces',serif;font-size:18px;font-weight:700;
+  color:var(--ink2);margin-bottom:4px;
+}
+.cmp-arrow{
+  font-size:28px;color:var(--sat);font-weight:700;margin-bottom:4px;
+}
+.cmp-delta{
+  font-size:13px;font-weight:700;padding:4px 12px;border-radius:20px;
+}
+.delta-up{background:#E8F5E9;color:#2E7D32;}
+.delta-dn{background:#FFEBEE;color:#C62828;}
+.delta-neu{background:var(--prev-lt);color:var(--prev);}
+
+/* ── TIMELINE CARD (per IIEE) ────────────────────────────────── */
+.iiee-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;}
+.iiee-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:28px;
+  border-top:4px solid var(--cc,var(--steam));
+  position:relative;overflow:hidden;
+}
+.iiee-card::after{
+  content:attr(data-name);
+  position:absolute;right:-10px;bottom:-10px;
+  font-family:'Fraunces',serif;font-size:80px;font-weight:800;
+  color:rgba(0,0,0,.03);line-height:1;pointer-events:none;
+}
+.iiee-name{
+  font-family:'Fraunces',serif;font-size:18px;font-weight:700;
+  color:var(--unicef-navy);margin-bottom:4px;
+}
+.iiee-meta{font-size:12px;color:var(--muted);margin-bottom:20px;}
+
+/* trend row */
+.trend-row{display:flex;align-items:center;gap:0;margin-bottom:14px;}
+.trend-year{
+  font-size:11px;font-weight:700;color:var(--muted);
+  letter-spacing:.5px;width:38px;flex-shrink:0;
+}
+.trend-bar-wrap{flex:1;position:relative;}
+.trend-bar{
+  height:32px;border-radius:6px;overflow:hidden;
+  display:flex;align-items:stretch;gap:1px;
+  margin-bottom:4px;
+}
+.trend-seg{
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:rgba(255,255,255,.9);
+  overflow:hidden;min-width:0;border-radius:4px;
+  transition:flex .6s ease;
+}
+.trend-seg span{white-space:nowrap;font-size:10px;}
+.ts{background:var(--sat)}.tp{background:var(--proc)}.ti{background:var(--ini)}.tv{background:var(--prev)}
+.trend-sat-val{
+  font-family:'Fraunces',serif;font-size:20px;font-weight:700;
+  width:56px;text-align:right;flex-shrink:0;margin-left:10px;
+}
+.trend-n{font-size:10px;color:var(--muted);}
+.trend-delta{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px;
+}
+
+/* ── GRADE TIMELINE ──────────────────────────────────────────── */
+.grade-section{margin-top:28px;}
+.grade-title{
+  font-size:12px;font-weight:700;color:var(--muted);
+  letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:12px;padding-bottom:8px;
+  border-bottom:1px solid var(--line);
+}
+.grade-row{
+  display:flex;align-items:center;gap:12px;margin:8px 0;
+}
+.grade-lbl{
+  font-size:12px;color:var(--muted);width:72px;flex-shrink:0;
+}
+.grade-dots{display:flex;gap:8px;align-items:center;flex:1;}
+.gdot{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  min-width:52px;
+}
+.gdot-circle{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:14px;font-weight:800;
+  border:2px solid transparent;
+}
+.gdot-yr{font-size:10px;color:var(--muted);}
+.gc-steam{background:#E0F0FA;color:var(--unicef-blue);border-color:rgba(0,114,186,.2);}
+.gc-steam-hi{background:var(--unicef-blue);color:#fff;}
+.gc-nosteam{background:var(--nosteam-lt);color:var(--nosteam);border-color:rgba(194,84,26,.2);}
+.gc-nosteam-hi{background:var(--nosteam);color:#fff;}
+.gc-warn{background:var(--ini-lt);color:var(--ini);border-color:rgba(184,50,50,.2);}
+.gc-great{background:var(--sat-lt);color:var(--sat);border-color:rgba(42,125,79,.2);}
+.gdot-arrow{color:var(--muted);font-size:14px;}
+
+/* ── GRUPO SUMMARY TABLE ─────────────────────────────────────── */
+.summary-table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  background:var(--card);border-radius:var(--r);
+  box-shadow:var(--shadow);overflow:hidden;
+  margin-bottom:24px;
+}
+.summary-table th{
+  padding:14px 20px;text-align:left;
+  font-size:11px;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;color:var(--muted);
+  background:var(--bg);border-bottom:2px solid rgba(255,255,255,.1);
+}
+.summary-table td{
+  padding:14px 20px;border-bottom:1px solid var(--line);
+  font-size:14px;color:var(--ink2);vertical-align:middle;
+}
+.summary-table tr:last-child td{border:none;}
+.summary-table tr:hover td{background:var(--bg);}
+.stag{
+  display:inline-block;padding:3px 10px;border-radius:20px;
+  font-size:11px;font-weight:700;
+}
+.stag-steam{background:#E0F0FA;color:var(--unicef-blue);}
+.stag-nosteam{background:var(--nosteam-lt);color:var(--nosteam);}
+.stag-up{background:var(--sat-lt);color:var(--sat);}
+.stag-dn{background:var(--ini-lt);color:var(--ini);}
+.stag-neu{background:var(--prev-lt);color:var(--prev);}
+.bold-num{font-family:'Fraunces',serif;font-size:18px;font-weight:700;}
+.sat-num{color:var(--sat);}
+.ini-num{color:var(--ini);}
+.muted-num{color:var(--muted);}
+
+/* ── INSIGHT CARDS ───────────────────────────────────────────── */
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.insight-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:28px;
+  border-left:3px solid var(--ic,var(--brown-lt));
+}
+.insight-icon{font-size:28px;margin-bottom:12px;}
+.insight-title{
+  font-family:'Fraunces',serif;font-size:17px;font-weight:700;
+  color:var(--unicef-navy);margin-bottom:8px;line-height:1.3;
+}
+.insight-body{font-size:13px;color:var(--muted);line-height:1.7;}
+.insight-highlight{
+  margin-top:12px;padding:10px 14px;border-radius:8px;
+  background:var(--card2);font-size:13px;font-weight:600;color:var(--ink2);
+}
+
+/* ── LEGEND ──────────────────────────────────────────────────── */
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
+.leg-i{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);}
+.leg-d{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+.footer{
+  background:var(--unicef-navy);color:rgba(255,255,255,.45);
+  padding:36px 64px;font-size:12px;line-height:1.8;margin-left:0;
+}
+.footer strong{color:rgba(255,255,255,.7);}
+
+
+/* ══ TAB NAVIGATION ══════════════════════════════════════════ */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  background:rgba(0,35,75,.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(28,171,226,.25);
+  display:flex;align-items:center;gap:0;padding:0 32px;height:56px;
+}
+.topnav-brand{
+  font-family:'Fraunces',serif;font-size:14px;font-weight:700;
+  color:rgba(255,255,255,.85);padding-right:28px;margin-right:12px;
+  border-right:1px solid rgba(255,255,255,.15);white-space:nowrap;
+  letter-spacing:.3px;
+}
+.topnav-brand span{color:#1CABE2;}
+.tab-btn{
+  padding:0 18px;height:56px;border:none;background:none;
+  color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:500;cursor:pointer;
+  position:relative;white-space:nowrap;letter-spacing:.2px;
+  transition:color .2s;
+}
+.tab-btn::after{
+  content:'';position:absolute;bottom:0;left:12px;right:12px;
+  height:2px;background:#1CABE2;border-radius:2px 2px 0 0;
+  transform:scaleX(0);transition:transform .25s ease;
+}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:#fff;}
+.tab-btn.active::after{transform:scaleX(1);}
+.tab-btn .tab-num{
+  font-size:10px;color:#1CABE2;font-weight:700;
+  margin-right:5px;opacity:.8;
+}
+.tab-next-prev{
+  margin-left:auto;display:flex;gap:8px;
+}
+.nav-arrow{
+  padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.05);color:rgba(255,255,255,.6);
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;
+  cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;
+}
+.nav-arrow:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25);}
+.nav-arrow:disabled{opacity:.25;cursor:default;}
+
+/* Panel system */
+.panel{display:none;}
+.panel.active{display:block;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+.main{margin-left:0;margin-top:56px;}
+.page-section{padding:48px 64px;}
+.page-section:nth-child(even){background:var(--bg);}
+
+/* Hide old sidenav */
+.sidenav{display:none !important;}
+
+/* Progress bar */
+.progress-bar{
+  position:fixed;top:56px;left:0;right:0;height:3px;
+  background:rgba(0,35,75,.08);z-index:299;
+}
+.progress-fill{
+  height:100%;background:linear-gradient(90deg,#1CABE2,#00C6FF);
+  transition:width .35s ease;border-radius:0 2px 2px 0;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media(max-width:960px){
+  .sidenav{display:none;}
+  .main{margin-left:0;}
+  .hero,.page-section{padding:40px 24px;}
+  .hero h1{font-size:34px;}
+  .iiee-grid,.insight-grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .hstat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);}
+  .cmp-strip{grid-template-columns:1fr;text-align:center;}
+  .cmp-side.right{align-items:flex-start;text-align:left;}
+}
+
+/* ── ANIMATIONS ──────────────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.iiee-card{animation:fadeUp .5s ease both;}
+.iiee-card:nth-child(2){animation-delay:.08s;}
+.iiee-card:nth-child(3){animation-delay:.16s;}
+.iiee-card:nth-child(4){animation-delay:.24s;}
+.iiee-card:nth-child(5){animation-delay:.32s;}
 </style>
 </head>
 <body>
 
-<aside class="sidebar">
-  <div class="sidebar-logo">
-    <div class="badge">UGEL HVCA</div>
-    <h2>Logros de Aprendizaje</h2>
-    <p>STEAM 2025</p>
+<!-- TOP NAVIGATION -->
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:14.3%"></div></div>
+<nav class="topnav">
+  <div class="topnav-brand">EREHUA <span>2024–25</span></div>
+  <button class="tab-btn active" onclick="showPanel(0,this)"><span class="tab-num">01</span>Vision General</button>
+  <button class="tab-btn" onclick="showPanel(1,this)"><span class="tab-num">02</span>Historico</button>
+  <button class="tab-btn" onclick="showPanel(2,this)"><span class="tab-num">03</span>IIEE STEAM</button>
+  <button class="tab-btn" onclick="showPanel(3,this)"><span class="tab-num">04</span>IIEE No-STEAM</button>
+  <button class="tab-btn" onclick="showPanel(5,this)"><span class="tab-num">06</span>Contexto</button>
+  <div class="tab-next-prev">
+    <button class="nav-arrow" id="btnPrev" onclick="navigate(-1)" disabled>&#8592; Anterior</button>
+    <button class="nav-arrow" id="btnNext" onclick="navigate(1)">Siguiente &#8594;</button>
   </div>
-  <div class="nav-section">Análisis Interno</div>
-  <div class="nav-item active" onclick="go('overview',this)"><div class="dot"></div><span>Resumen General</span></div>
-  <div class="nav-item" onclick="go('iiee',this)"><div class="dot"></div><span>Por Institución</span></div>
-  <div class="nav-item" onclick="go('areas',this)"><div class="dot"></div><span>Por Área Curricular</span></div>
-  <div class="nav-item" onclick="go('grados',this)"><div class="dot"></div><span>Por Grado</span></div>
-  <div class="nav-section">Evaluación Externa</div>
-  <div class="nav-item" onclick="go('erehua',this)"><div class="dot"></div><span>EREHUA 2025</span></div>
-  <div class="nav-item" onclick="go('comp',this)"><div class="dot"></div><span>STEAM vs No-STEAM</span></div>
-  <div class="sidebar-footer">UNICEF<br/>Año 2025</div>
-</aside>
+</nav>
 
-<main class="main">
-  <div class="topbar">
-    <div class="topbar-title" id="ttitle">Resumen General</div>
-    <div class="topbar-meta">
-      <span class="chip hi">5 IIEE STEAM</span>
-      <span class="chip">4.°–6.° Grado</span>
-      <span class="chip">Mat · Com · CyT</span>
-      <span class="chip">1,986 estudiantes</span>
+<div class="main">
+<div class="panel active" id="panel0">
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="hero" id="overview">
+  <div class="hero-bg-text">EREHUA</div>
+  <div class="hero-eyebrow"><span></span> Huancavelica · Primaria · Evaluacion Estandarizada</div>
+  <h1>El STEAM <em>si marca</em><br/>la diferencia</h1>
+  <p class="hero-sub">
+    Analisis historico de la Evaluacion Regional EREHUA 2024 y 2025.
+    Comparamos 5 IIEE con enfoque STEAM frente a 5 IIEE sin este enfoque,
+    con datos reales por estudiante, grado y año.
+  </p>
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-v">8,682</div>
+      <div class="hstat-l">Registros analizados</div>
     </div>
-  </div>
-
-  <!-- ══ OVERVIEW ══ -->
-  <div class="section active" id="sec-overview">
-    <div class="hero">
-      <h1>Impacto STEAM en los Aprendizajes</h1>
-      <p>Análisis de logros en 5 IIEE con enfoque STEAM, 4.° a 6.° grado, en Matemática, Comunicación y Ciencia y Tecnología — UGEL Huancavelica 2025. Los porcentajes reflejan el promedio ponderado de competencias por área.</p>
-      <div class="hero-stats">
-        <div><div class="hero-stat-val">1,986</div><div class="hero-stat-lab">Estudiantes evaluados</div></div>
-        <div><div class="hero-stat-val">96.5%</div><div class="hero-stat-lab">AD+A promedio STEAM</div></div>
-        <div><div class="hero-stat-val">0.4%</div><div class="hero-stat-lab">Nivel C promedio STEAM</div></div>
-        <div><div class="hero-stat-val">5 IIEE</div><div class="hero-stat-lab">Instituciones STEAM</div></div>
-      </div>
+    <div class="hstat">
+      <div class="hstat-v">10</div>
+      <div class="hstat-l">IIEE comparadas</div>
     </div>
-    <div class="kpi-grid">
-      <div class="kpi" style="--kc:var(--ad)"><div class="kpi-lbl">Logro Destacado (AD)</div><div class="kpi-val">19.7%</div><div class="kpi-sub">Promedio 5 IIEE STEAM</div><div class="kpi-tag tag-up">▲ +4.5 pp vs UGEL</div></div>
-      <div class="kpi" style="--kc:var(--a)"><div class="kpi-lbl">Logrado (A)</div><div class="kpi-val">75.0%</div><div class="kpi-sub">Promedio 5 IIEE STEAM</div><div class="kpi-tag tag-up">↑ Nivel satisfactorio</div></div>
-      <div class="kpi" style="--kc:var(--b)"><div class="kpi-lbl">En Proceso (B)</div><div class="kpi-val">4.9%</div><div class="kpi-sub">Promedio 5 IIEE STEAM</div><div class="kpi-tag tag-warn">⚠ Requiere atención</div></div>
-      <div class="kpi" style="--kc:var(--c)"><div class="kpi-lbl">En Inicio (C)</div><div class="kpi-val">0.4%</div><div class="kpi-sub">Promedio 5 IIEE STEAM</div><div class="kpi-tag tag-up">▼ −4.9 pp vs No-STEAM</div></div>
-      <div class="kpi" style="--kc:var(--teal2)"><div class="kpi-lbl">Líder en AD</div><div class="kpi-val">25.2%</div><div class="kpi-sub">I.E. 36002 — Azules</div><div class="kpi-tag tag-up">★ Mayor AD</div></div>
-      <div class="kpi" style="--kc:var(--amber)"><div class="kpi-lbl">Mayor matrícula</div><div class="kpi-val">721</div><div class="kpi-sub">I.E. 37001 — PEPIN</div><div class="kpi-tag tag-up">22.0% AD</div></div>
+    <div class="hstat">
+      <div class="hstat-v">+4.1pp</div>
+      <div class="hstat-l">Ventaja STEAM en 2024</div>
+      <div class="hstat-tag">Satisfactorio</div>
     </div>
-    <div class="g2">
-      <div class="cc"><div class="cc-title">Distribución de Niveles — 5 IIEE STEAM</div><div class="cc-sub">Porcentaje total consolidado</div><canvas class="cv" id="c-pie" height="220"></canvas></div>
-      <div class="cc"><div class="cc-title">AD + A por Institución</div><div class="cc-sub">Tasa de logro satisfactorio (meta ≥ 95%)</div><canvas class="cv" id="c-ada" height="220"></canvas></div>
-    </div>
-    <div class="cc">
-      <div class="cc-title">Perfil AD / A / B / C por IIEE</div>
-      <div class="legend">
-        <div class="leg-item"><div class="leg-dot" style="background:var(--ad)"></div>AD – Logro Destacado</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--a)"></div>A – Logrado</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--b)"></div>B – En Proceso</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--c)"></div>C – En Inicio</div>
-      </div>
-      <div id="sb-overview"></div>
-    </div>
-    <div class="insights">
-      <div class="insight" style="--ic:var(--ad)"><div class="insight-t">🏆 I.E. 36002 — Líder en AD</div><div class="insight-b">Con 25.2% de Logro Destacado y solo 1.8% en Proceso, es la institución más equilibrada entre áreas. Candidata a escuela modelo STEAM de la UGEL.</div></div>
-      <div class="insight" style="--ic:var(--b)"><div class="insight-t">⚠ I.E. 36009 — Atención en B</div><div class="insight-b">El 8.9% en nivel B es el más alto del grupo STEAM, concentrado en 5.° grado (14.3%). Requiere refuerzo pedagógico focalizado.</div></div>
-      <div class="insight" style="--ic:var(--c)"><div class="insight-t">🔴 I.E. 36036 — En consolidación</div><div class="insight-b">Con 9.6% AD y 1.3% C, la implementación STEAM aún está madurando. El 4.° grado concentra los indicadores más críticos (C: 2.7%).</div></div>
-      <div class="insight" style="--ic:var(--teal)"><div class="insight-t">📈 Efecto STEAM acumulativo</div><div class="insight-b">En 3 de 5 IIEE el %AD en 6.° es notablemente mayor que en 4.°, sugiriendo que el impacto se profundiza con los años de exposición al modelo.</div></div>
+    <div class="hstat">
+      <div class="hstat-v">+17.3pp</div>
+      <div class="hstat-l">Ventaja STEAM en 2025</div>
+      <div class="hstat-tag">Brecha creciente</div>
     </div>
   </div>
+</section>
 
-  <!-- ══ POR IIEE ══ -->
-  <div class="section" id="sec-iiee">
-    <div class="sec-header"><h1>Análisis por Institución Educativa</h1><p>Perfil detallado de cada IIEE: niveles de logro por área curricular y grado escolar.</p></div>
-    <div class="tabs" id="iieeTabs">
-      <button class="tab active" onclick="selIIEE('37001',this)">37001 — PEPIN</button>
-      <button class="tab" onclick="selIIEE('36001',this)">36001 — LAS VERDES</button>
-      <button class="tab" onclick="selIIEE('36002',this)">36002 — AZULES</button>
-      <button class="tab" onclick="selIIEE('36009',this)">36009 — JOSE ORDAYA</button>
-      <button class="tab" onclick="selIIEE('36036',this)">36036 — YAULI</button>
-    </div>
-    <div id="iieeDetail"></div>
-  </div>
+</div>
+<div class="panel" id="panel1">
+<!-- ══ 01. VISION HISTORICA ══════════════════════════════════════ -->
+<section class="page-section" id="historico">
+  <div class="sec-eyebrow">Vision General</div>
+  <h2 class="sec-title">¿Como evolucionaron ambos grupos?</h2>
+  <p class="sec-desc">
+    El % Satisfactorio es el indicador clave de la EREHUA. Las IIEE STEAM parten de una base
+    mas alta en 2024 y mantienen ventaja en 2025, aunque ambos grupos enfrentaron presion
+    a la baja — posiblemente por la incorporacion del 2.° grado en la evaluacion 2025.
+  </p>
 
-  <!-- ══ ÁREAS ══ -->
-  <div class="section" id="sec-areas">
-    <div class="sec-header"><h1>Análisis por Área Curricular</h1><p>Comparación de niveles de logro en Matemática, Comunicación y Ciencia y Tecnología.</p></div>
-    <div class="g3">
-      <div class="cc"><div class="cc-title">Matemática — %AD por IIEE</div><canvas class="cv" id="c-mat" height="180"></canvas></div>
-      <div class="cc"><div class="cc-title">Comunicación — %AD por IIEE</div><canvas class="cv" id="c-com" height="180"></canvas></div>
-      <div class="cc"><div class="cc-title">Ciencia y Tecnología — %AD</div><canvas class="cv" id="c-cyt" height="180"></canvas></div>
+  <!-- 2024 -->
+  <div class="cmp-strip">
+    <div class="cmp-side">
+      <div class="cmp-tag steam">5 IIEE con STEAM</div>
+      <div class="cmp-val steam">20.8%</div>
+      <div class="cmp-sub">4,936 estudiantes evaluados</div>
     </div>
-    <div class="cc"><div class="cc-title">Tasa de Logro AD+A por Área — Todas las IIEE</div><div class="cc-sub">Columnas agrupadas — meta 95%</div><canvas class="cv" id="c-ada2" height="260"></canvas></div>
-    <div class="cc">
-      <div class="cc-title">Perfil por Área — Barras Apiladas</div>
-      <div class="legend">
-        <div class="leg-item"><div class="leg-dot" style="background:var(--ad)"></div>AD</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--a)"></div>A</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--b)"></div>B</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--c)"></div>C</div>
-      </div>
-      <div id="sb-areas"></div>
+    <div class="cmp-center">
+      <div class="cmp-year">2024</div>
+      <div class="cmp-arrow">←→</div>
+      <div class="cmp-delta delta-up">+4.1 pp de ventaja</div>
+    </div>
+    <div class="cmp-side right">
+      <div class="cmp-tag nosteam">5 IIEE sin STEAM</div>
+      <div class="cmp-val nosteam">16.7%</div>
+      <div class="cmp-sub">1,046 estudiantes evaluados</div>
     </div>
   </div>
 
-  <!-- ══ GRADOS ══ -->
-  <div class="section" id="sec-grados">
-    <div class="sec-header"><h1>Análisis por Grado Escolar</h1><p>Evolución del %AD desde 4.° hasta 6.° grado. El patrón ascendente evidencia el efecto acumulativo del enfoque STEAM.</p></div>
-    <div class="g2">
-      <div class="cc"><div class="cc-title">Efecto Acumulativo — %AD por Grado y IIEE</div><canvas class="cv" id="c-gado" height="260"></canvas></div>
-      <div class="cc"><div class="cc-title">Nivel C por Grado — Alerta</div><canvas class="cv" id="c-gc" height="260"></canvas></div>
+  <!-- 2025 -->
+  <div class="cmp-strip">
+    <div class="cmp-side">
+      <div class="cmp-tag steam">5 IIEE con STEAM</div>
+      <div class="cmp-val steam">35.7%</div>
+      <div class="cmp-sub">3,726 estudiantes evaluados</div>
     </div>
-    <div class="cc">
-      <div class="cc-title">Perfil Completo por Grado — Barras Apiladas</div>
-      <div class="legend">
-        <div class="leg-item"><div class="leg-dot" style="background:var(--ad)"></div>AD</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--a)"></div>A</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--b)"></div>B</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--c)"></div>C</div>
-      </div>
-      <div id="sb-grados"></div>
+    <div class="cmp-center">
+      <div class="cmp-year">2025</div>
+      <div class="cmp-arrow">←→</div>
+      <div class="cmp-delta delta-up">+17.3 pp de ventaja</div>
+    </div>
+    <div class="cmp-side right">
+      <div class="cmp-tag nosteam">5 IIEE sin STEAM</div>
+      <div class="cmp-val nosteam">18.4%</div>
+      <div class="cmp-sub">958 estudiantes evaluados</div>
     </div>
   </div>
 
-  <!-- ══ EREHUA ══ -->
-  <div class="section" id="sec-erehua">
-    <div class="sec-header"><h1>Evaluación Regional EREHUA 2025</h1><p>Resultados de la evaluación estandarizada externa en 4.° y 6.° grado. Escala: Satisfactorio / En Proceso / En Inicio / Previo al Inicio.</p></div>
-    <div class="kpi-grid">
-      <div class="kpi" style="--kc:var(--sat)"><div class="kpi-lbl">Mejor Satisf. 4.° — Mat</div><div class="kpi-val">36001</div><div class="kpi-sub">33.1% Satisfactorio</div><div class="kpi-tag tag-up">▲ Sobre promedio UGEL</div></div>
-      <div class="kpi" style="--kc:var(--amber)"><div class="kpi-lbl">Mayor salto 4.°→6.°</div><div class="kpi-val">36001</div><div class="kpi-sub">+29 pp en Matemática</div><div class="kpi-tag tag-up">🚀 Efecto acumulativo</div></div>
-      <div class="kpi" style="--kc:var(--inicio)"><div class="kpi-lbl">Mayor reto 6.° Grado</div><div class="kpi-val">36009</div><div class="kpi-sub">67.8% Inicio en Mat.</div><div class="kpi-tag tag-alert">⚠ Brecha int.–ext.</div></div>
-      <div class="kpi" style="--kc:var(--teal)"><div class="kpi-lbl">Ref. UGEL Satisf. 4.° Mat</div><div class="kpi-val">27.7%</div><div class="kpi-sub">Promedio UGEL 4.°</div><div class="kpi-tag tag-warn">— Referencia</div></div>
-    </div>
-    <div class="g2">
-      <div class="cc"><div class="cc-title">EREHUA 4.° — %Satisfactorio por IIEE</div><div class="cc-sub">Mat · Com · CyT — línea punteada = promedio UGEL</div><canvas class="cv" id="c-er4" height="260"></canvas></div>
-      <div class="cc"><div class="cc-title">EREHUA 6.° — %Satisfactorio por IIEE</div><div class="cc-sub">Mat · Com · CyT — línea punteada = promedio UGEL</div><canvas class="cv" id="c-er6" height="260"></canvas></div>
-    </div>
-    <!-- Tabs para 4° y 6° -->
-    <div style="display:flex;gap:10px;margin-bottom:4px;" id="er-grade-tabs">
-      <button class="tab active" onclick="selErGrade('g4',this)" style="font-family:'DM Sans',Arial,sans-serif;">4.° Grado</button>
-      <button class="tab" onclick="selErGrade('g6',this)" style="font-family:'DM Sans',Arial,sans-serif;">6.° Grado</button>
-    </div>
+  <!-- Summary table -->
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>IIEE</th><th>Grupo</th>
+        <th>Satisfactorio 2024</th><th>Satisfactorio 2025</th>
+        <th>Cambio</th><th>En Inicio 2024</th><th>En Inicio 2025</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>37001 PEPIN</strong></td>
+        <td><span class="stag stag-steam">STEAM</span></td>
+        <td><span class="bold-num muted-num">25.4%</span></td>
+        <td><span class="bold-num sat-num">39.8%</span></td>
+        <td><span class="stag stag-up">↑ +14.4 pp</span></td>
+        <td>20.1%</td><td>6.8%</td>
+      </tr>
+      <tr>
+        <td><strong>36001 Las Verdes</strong> ⭐</td>
+        <td><span class="stag stag-steam">STEAM</span></td>
+        <td><span class="bold-num sat-num">32.1%</span></td>
+        <td><span class="bold-num sat-num">44.2%</span></td>
+        <td><span class="stag stag-up">↑ +12.1 pp</span></td>
+        <td>9.6%</td><td>13.3%</td>
+      </tr>
+      <tr>
+        <td><strong>36002 Azules</strong></td>
+        <td><span class="stag stag-steam">STEAM</span></td>
+        <td><span class="bold-num muted-num">23.1%</span></td>
+        <td><span class="bold-num sat-num">34.3%</span></td>
+        <td><span class="stag stag-up">↑ +11.2 pp</span></td>
+        <td>23.6%</td><td>8.4%</td>
+      </tr>
+      <tr>
+        <td><strong>36009 Ordaya</strong></td>
+        <td><span class="stag stag-steam">STEAM</span></td>
+        <td><span class="bold-num ini-num">13.6%</span></td>
+        <td><span class="bold-num sat-num">35.0%</span></td>
+        <td><span class="stag stag-up">↑ +21.4 pp</span></td>
+        <td>33.8%</td><td>7.8%</td>
+      </tr>
+      <tr>
+        <td><strong>36036 Yauli</strong></td>
+        <td><span class="stag stag-steam">STEAM</span></td>
+        <td><span class="bold-num ini-num">9.8%</span></td>
+        <td><span class="bold-num sat-num">25.3%</span></td>
+        <td><span class="stag stag-up">↑ +15.5 pp</span></td>
+        <td>32.0%</td><td>8.9%</td>
+      </tr>
+      <tr style="background:rgba(194,84,26,.02)">
+        <td><strong>36004</strong></td>
+        <td><span class="stag stag-nosteam">No-STEAM</span></td>
+        <td><span class="bold-num ini-num">13.9%</span></td>
+        <td><span class="bold-num muted-num">24.6%</span></td>
+        <td><span class="stag stag-up">↑ +10.7 pp</span></td>
+        <td>34.6%</td><td>11.8%</td>
+      </tr>
+      <tr style="background:rgba(194,84,26,.02)">
+        <td><strong>36003</strong></td>
+        <td><span class="stag stag-nosteam">No-STEAM</span></td>
+        <td><span class="bold-num muted-num">18.1%</span></td>
+        <td><span class="bold-num ini-num">12.5%</span></td>
+        <td><span class="stag stag-dn">↓ 5.6 pp</span></td>
+        <td>37.4%</td><td>19.4%</td>
+      </tr>
+      <tr style="background:rgba(194,84,26,.02)">
+        <td><strong>36010</strong></td>
+        <td><span class="stag stag-nosteam">No-STEAM</span></td>
+        <td><span class="bold-num muted-num">19.0%</span></td>
+        <td><span class="bold-num muted-num">18.4%</span></td>
+        <td><span class="stag stag-neu">↔ -0.6 pp</span></td>
+        <td>26.7%</td><td>35.1%</td>
+      </tr>
+      <tr style="background:rgba(194,84,26,.02)">
+        <td><strong>36013</strong></td>
+        <td><span class="stag stag-nosteam">No-STEAM</span></td>
+        <td><span class="bold-num ini-num">14.8%</span></td>
+        <td><span class="bold-num muted-num">19.0%</span></td>
+        <td><span class="stag stag-up">↑ +4.2 pp</span></td>
+        <td>29.0%</td><td>24.6%</td>
+      </tr>
+      <tr style="background:rgba(194,84,26,.02)">
+        <td><strong>36049</strong></td>
+        <td><span class="stag stag-nosteam">No-STEAM</span></td>
+        <td><span class="bold-num muted-num">17.9%</span></td>
+        <td><span class="bold-num muted-num">17.5%</span></td>
+        <td><span class="stag stag-neu">↔ -0.4 pp</span></td>
+        <td>30.1%</td><td>11.1%</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
-    <!-- 4° GRADO -->
-    <div id="er-g4-panel">
-      <div class="cc" style="margin-bottom:16px;">
-        <div class="cc-title">EREHUA 4.° — Matemática</div>
-        <div class="legend">
-          <div class="leg-item"><div class="leg-dot" style="background:var(--sat)"></div>Satisfactorio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--proc)"></div>En Proceso</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--inicio)"></div>En Inicio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--previo)"></div>Previo al Inicio</div>
+</div>
+<div class="panel" id="panel2">
+<!-- ══ 02. IIEE STEAM ══════════════════════════════════════════════ -->
+<section class="page-section" id="steam">
+  <div class="sec-eyebrow">Grupo STEAM</div>
+  <h2 class="sec-title">Evolucion por institucion — STEAM</h2>
+  <p class="sec-desc">
+    Cada tarjeta muestra el perfil completo (Satisfactorio, En Proceso, En Inicio, Previo)
+    para 2024 y 2025. El numero en la esquina derecha es el % Satisfactorio del año.
+  </p>
+  <div class="legend">
+    <div class="leg-i"><div class="leg-d" style="background:var(--sat)"></div>Satisfactorio</div>
+    <div class="leg-i"><div class="leg-d" style="background:var(--proc)"></div>En Proceso</div>
+    <div class="leg-i"><div class="leg-d" style="background:var(--ini)"></div>En Inicio</div>
+    <div class="leg-i"><div class="leg-d" style="background:var(--prev)"></div>Previo al Inicio</div>
+  </div>
+
+  <div class="iiee-grid">
+
+    <!-- 37001 PEPIN -->
+    <div class="iiee-card" style="--cc:var(--steam)" data-name="37001">
+      <div class="iiee-name">37001 — PEPIN</div>
+      <div class="iiee-meta">Mayor IIEE STEAM · 3,282 registros totales</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:25.4"><span>25.4%</span></div>
+            <div class="trend-seg tp" style="flex:53.3"><span>53.3%</span></div>
+            <div class="trend-seg ti" style="flex:20.1"><span>20.1%</span></div>
+            <div class="trend-seg tv" style="flex:1.2"></div>
+          </div>
+          <div class="trend-n">n = 1,905 estudiantes</div>
         </div>
-        <div id="sb-er4-mat"></div>
+        <div class="trend-sat-val" style="color:var(--proc)">25.4%</div>
       </div>
-      <div class="cc" style="margin-bottom:16px;">
-        <div class="cc-title">EREHUA 4.° — Comunicación</div>
-        <div class="legend">
-          <div class="leg-item"><div class="leg-dot" style="background:var(--sat)"></div>Satisfactorio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--proc)"></div>En Proceso</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--inicio)"></div>En Inicio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--previo)"></div>Previo al Inicio</div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:39.8"><span>39.8%</span></div>
+            <div class="trend-seg tp" style="flex:51.8"><span>51.8%</span></div>
+            <div class="trend-seg ti" style="flex:6.8"></div>
+            <div class="trend-seg tv" style="flex:1.7"></div>
+          </div>
+          <div class="trend-n">n = 1,377 estudiantes <span class="trend-delta delta-up">↑ +14.4 pp</span></div>
         </div>
-        <div id="sb-er4-com"></div>
+        <div class="trend-sat-val" style="color:var(--sat)">39.8%</div>
       </div>
-      <div class="cc">
-        <div class="cc-title">EREHUA 4.° — Ciencia y Tecnología</div>
-        <div class="legend">
-          <div class="leg-item"><div class="leg-dot" style="background:var(--sat)"></div>Satisfactorio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--proc)"></div>En Proceso</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--inicio)"></div>En Inicio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--previo)"></div>Previo al Inicio</div>
+      <!-- By grade -->
+      <div class="grade-section">
+        <div class="grade-title">Satisfactorio por grado</div>
+        <div class="grade-row">
+          <div class="grade-lbl">2.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam">24.2</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam">—</div><div class="gdot-yr">2025</div></div>
+          </div>
         </div>
-        <div id="sb-er4-cyt"></div>
+        <div class="grade-row">
+          <div class="grade-lbl">4.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam">28.4</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam-hi">33.2</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+        <div class="grade-row">
+          <div class="grade-lbl">6.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam">22.8</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam-hi">45.5</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- 6° GRADO -->
-    <div id="er-g6-panel" style="display:none;">
-      <div class="cc" style="margin-bottom:16px;">
-        <div class="cc-title">EREHUA 6.° — Matemática</div>
-        <div class="legend">
-          <div class="leg-item"><div class="leg-dot" style="background:var(--sat)"></div>Satisfactorio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--proc)"></div>En Proceso</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--inicio)"></div>En Inicio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--previo)"></div>Previo al Inicio</div>
+    <!-- 36001 LAS VERDES -->
+    <div class="iiee-card" style="--cc:var(--sat)" data-name="36001">
+      <div class="iiee-name">36001 — Las Verdes ⭐</div>
+      <div class="iiee-meta">IE exclusiva de mujeres · Unica IIEE STEAM con mejora sostenida · 1,762 registros</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:32.1"><span>32.1%</span></div>
+            <div class="trend-seg tp" style="flex:56.5"><span>56.5%</span></div>
+            <div class="trend-seg ti" style="flex:9.6"></div>
+            <div class="trend-seg tv" style="flex:1.8"></div>
+          </div>
+          <div class="trend-n">n = 798 estudiantes</div>
         </div>
-        <div id="sb-er6-mat"></div>
+        <div class="trend-sat-val" style="color:var(--sat)">32.1%</div>
       </div>
-      <div class="cc" style="margin-bottom:16px;">
-        <div class="cc-title">EREHUA 6.° — Comunicación</div>
-        <div class="legend">
-          <div class="leg-item"><div class="leg-dot" style="background:var(--sat)"></div>Satisfactorio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--proc)"></div>En Proceso</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--inicio)"></div>En Inicio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--previo)"></div>Previo al Inicio</div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:44.2"><span>44.2%</span></div>
+            <div class="trend-seg tp" style="flex:41.4"><span>41.4%</span></div>
+            <div class="trend-seg ti" style="flex:13.3"><span>13.3%</span></div>
+            <div class="trend-seg tv" style="flex:1.1"></div>
+          </div>
+          <div class="trend-n">n = 964 estudiantes <span class="trend-delta delta-up">↑ +12.1 pp</span></div>
         </div>
-        <div id="sb-er6-com"></div>
+        <div class="trend-sat-val" style="color:var(--sat)">44.2%</div>
       </div>
-      <div class="cc">
-        <div class="cc-title">EREHUA 6.° — Ciencia y Tecnología</div>
-        <div class="legend">
-          <div class="leg-item"><div class="leg-dot" style="background:var(--sat)"></div>Satisfactorio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--proc)"></div>En Proceso</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--inicio)"></div>En Inicio</div>
-          <div class="leg-item"><div class="leg-dot" style="background:var(--previo)"></div>Previo al Inicio</div>
+      <div class="grade-section">
+        <div class="grade-title">Satisfactorio por grado</div>
+        <div class="grade-row">
+          <div class="grade-lbl">2.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam">—</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-great">62.7</div><div class="gdot-yr">2025</div></div>
+          </div>
         </div>
-        <div id="sb-er6-cyt"></div>
+        <div class="grade-row">
+          <div class="grade-lbl">4.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam-hi">35.9</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam">28.4</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+        <div class="grade-row">
+          <div class="grade-lbl">6.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam">28.4</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-great">47.5</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 36002 AZULES -->
+    <div class="iiee-card" style="--cc:var(--steam)" data-name="36002">
+      <div class="iiee-name">36002 — Azules</div>
+      <div class="iiee-meta">1,079 registros totales</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:23.1"><span>23.1%</span></div>
+            <div class="trend-seg tp" style="flex:51.5"><span>51.5%</span></div>
+            <div class="trend-seg ti" style="flex:23.6"><span>23.6%</span></div>
+            <div class="trend-seg tv" style="flex:1.8"></div>
+          </div>
+          <div class="trend-n">n = 542 estudiantes</div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--proc)">23.1%</div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:34.3"><span>34.3%</span></div>
+            <div class="trend-seg tp" style="flex:55.9"><span>55.9%</span></div>
+            <div class="trend-seg ti" style="flex:8.4"></div>
+            <div class="trend-seg tv" style="flex:1.5"></div>
+          </div>
+          <div class="trend-n">n = 537 estudiantes <span class="trend-delta delta-up">↑ +11.2 pp</span></div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--sat)">34.3%</div>
+      </div>
+      <div class="grade-section">
+        <div class="grade-title">Satisfactorio por grado</div>
+        <div class="grade-row">
+          <div class="grade-lbl">2.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam">27.2</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam">30.5</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+        <div class="grade-row">
+          <div class="grade-lbl">4.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam">26.9</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam-hi">38.4</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+        <div class="grade-row">
+          <div class="grade-lbl">6.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam">17.6</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam">—</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 36009 ORDAYA -->
+    <div class="iiee-card" style="--cc:var(--sat)" data-name="36009">
+      <div class="iiee-name">36009 — Ordaya</div>
+      <div class="iiee-meta">Mayor mejora entre STEAM (+21 pp) · 1,511 registros</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:13.6"><span>13.6%</span></div>
+            <div class="trend-seg tp" style="flex:48.3"><span>48.3%</span></div>
+            <div class="trend-seg ti" style="flex:33.8"><span>33.8%</span></div>
+            <div class="trend-seg tv" style="flex:4.4"></div>
+          </div>
+          <div class="trend-n">n = 1,034 estudiantes</div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--ini)">13.6%</div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:35.0"><span>35.0%</span></div>
+            <div class="trend-seg tp" style="flex:50.1"><span>50.1%</span></div>
+            <div class="trend-seg ti" style="flex:7.8"></div>
+            <div class="trend-seg tv" style="flex:7.1"><span>7.1%</span></div>
+          </div>
+          <div class="trend-n">n = 477 estudiantes <span class="trend-delta delta-up">↑ +21.4 pp</span></div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--sat)">35.0%</div>
+      </div>
+      <div class="grade-section">
+        <div class="grade-title">Satisfactorio por grado</div>
+        <div class="grade-row">
+          <div class="grade-lbl">2.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-warn">16.9</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam">—</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+        <div class="grade-row">
+          <div class="grade-lbl">4.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-warn">16.7</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam-hi">35.0</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+        <div class="grade-row">
+          <div class="grade-lbl">6.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-warn">9.2</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam">—</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 36036 YAULI -->
+    <div class="iiee-card" style="--cc:var(--sat)" data-name="36036">
+      <div class="iiee-name">36036 — Yauli</div>
+      <div class="iiee-meta">Crecimiento sostenido en todos los grados · 1,028 registros</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:9.8"><span>9.8%</span></div>
+            <div class="trend-seg tp" style="flex:54.0"><span>54.0%</span></div>
+            <div class="trend-seg ti" style="flex:32.0"><span>32.0%</span></div>
+            <div class="trend-seg tv" style="flex:4.3"></div>
+          </div>
+          <div class="trend-n">n = 491 estudiantes</div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--ini)">9.8%</div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:25.3"><span>25.3%</span></div>
+            <div class="trend-seg tp" style="flex:65.4"><span>65.4%</span></div>
+            <div class="trend-seg ti" style="flex:8.9"></div>
+            <div class="trend-seg tv" style="flex:0.4"></div>
+          </div>
+          <div class="trend-n">n = 537 estudiantes <span class="trend-delta delta-up">↑ +15.5 pp</span></div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--sat)">25.3%</div>
+      </div>
+      <div class="grade-section">
+        <div class="grade-title">Satisfactorio por grado</div>
+        <div class="grade-row">
+          <div class="grade-lbl">2.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-warn">9.1</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam">26.8</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+        <div class="grade-row">
+          <div class="grade-lbl">4.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-warn">6.0</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam">24.2</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+        <div class="grade-row">
+          <div class="grade-lbl">6.° Grado</div>
+          <div class="grade-dots">
+            <div class="gdot"><div class="gdot-circle gc-steam">13.2</div><div class="gdot-yr">2024</div></div>
+            <div class="gdot-arrow">→</div>
+            <div class="gdot"><div class="gdot-circle gc-steam">25.4</div><div class="gdot-yr">2025</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /iiee-grid steam -->
+</section>
+
+</div>
+<div class="panel" id="panel3">
+<!-- ══ 03. IIEE NO-STEAM ══════════════════════════════════════════ -->
+<section class="page-section" id="nosteam">
+  <div class="sec-eyebrow">Grupo Comparativo</div>
+  <h2 class="sec-title">Evolucion por institucion — Sin STEAM</h2>
+  <p class="sec-desc">
+    Las 5 IIEE con mayor matricula en UGEL Huancavelica sin enfoque STEAM.
+    Sirven de linea base para medir el impacto del modelo.
+  </p>
+  <div class="legend">
+    <div class="leg-i"><div class="leg-d" style="background:var(--sat)"></div>Satisfactorio</div>
+    <div class="leg-i"><div class="leg-d" style="background:var(--proc)"></div>En Proceso</div>
+    <div class="leg-i"><div class="leg-d" style="background:var(--ini)"></div>En Inicio</div>
+    <div class="leg-i"><div class="leg-d" style="background:var(--prev)"></div>Previo al Inicio</div>
+  </div>
+
+  <div class="iiee-grid">
+
+    <!-- 36004 -->
+    <div class="iiee-card" style="--cc:var(--nosteam)" data-name="36004">
+      <div class="iiee-name">36004</div>
+      <div class="iiee-meta">Mayor IIEE No-STEAM · 679 registros totales</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:13.9"><span>13.9%</span></div>
+            <div class="trend-seg tp" style="flex:48.2"><span>48.2%</span></div>
+            <div class="trend-seg ti" style="flex:34.6"><span>34.6%</span></div>
+            <div class="trend-seg tv" style="flex:3.4"></div>
+          </div>
+          <div class="trend-n">n = 382 estudiantes</div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--ini)">13.9%</div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:24.6"><span>24.6%</span></div>
+            <div class="trend-seg tp" style="flex:56.6"><span>56.6%</span></div>
+            <div class="trend-seg ti" style="flex:11.8"></div>
+            <div class="trend-seg tv" style="flex:7.1"><span>7.1%</span></div>
+          </div>
+          <div class="trend-n">n = 297 estudiantes <span class="trend-delta delta-up">↑ +10.7 pp</span></div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--proc)">24.6%</div>
+      </div>
+      <div class="grade-section">
+        <div class="grade-title">Satisfactorio por grado</div>
+        <div class="grade-row"><div class="grade-lbl">4.° Grado</div><div class="grade-dots">
+          <div class="gdot"><div class="gdot-circle gc-nosteam">20.8</div><div class="gdot-yr">2024</div></div>
+          <div class="gdot-arrow">→</div>
+          <div class="gdot"><div class="gdot-circle gc-nosteam">24.4</div><div class="gdot-yr">2025</div></div>
+        </div></div>
+        <div class="grade-row"><div class="grade-lbl">6.° Grado</div><div class="grade-dots">
+          <div class="gdot"><div class="gdot-circle gc-warn">11.9</div><div class="gdot-yr">2024</div></div>
+          <div class="gdot-arrow">→</div>
+          <div class="gdot"><div class="gdot-circle gc-nosteam">24.7</div><div class="gdot-yr">2025</div></div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- 36003 -->
+    <div class="iiee-card" style="--cc:var(--nosteam)" data-name="36003">
+      <div class="iiee-name">36003</div>
+      <div class="iiee-meta">Baja en 2025 · 371 registros totales</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:18.1"><span>18.1%</span></div>
+            <div class="trend-seg tp" style="flex:42.6"><span>42.6%</span></div>
+            <div class="trend-seg ti" style="flex:37.4"><span>37.4%</span></div>
+            <div class="trend-seg tv" style="flex:1.9"></div>
+          </div>
+          <div class="trend-n">n = 155 estudiantes</div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--proc)">18.1%</div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:12.5"><span>12.5%</span></div>
+            <div class="trend-seg tp" style="flex:58.3"><span>58.3%</span></div>
+            <div class="trend-seg ti" style="flex:19.4"><span>19.4%</span></div>
+            <div class="trend-seg tv" style="flex:9.7"><span>9.7%</span></div>
+          </div>
+          <div class="trend-n">n = 216 estudiantes <span class="trend-delta delta-dn">↓ 5.6 pp</span></div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--ini)">12.5%</div>
+      </div>
+      <div class="grade-section">
+        <div class="grade-title">6.° Grado — caso critico en 2025</div>
+        <div class="grade-row"><div class="grade-lbl">6.° Grado</div><div class="grade-dots">
+          <div class="gdot"><div class="gdot-circle gc-warn">0.0</div><div class="gdot-yr">2024</div></div>
+          <div class="gdot-arrow">→</div>
+          <div class="gdot"><div class="gdot-circle gc-warn">3.9</div><div class="gdot-yr">2025</div></div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- 36010 -->
+    <div class="iiee-card" style="--cc:var(--nosteam)" data-name="36010">
+      <div class="iiee-name">36010</div>
+      <div class="iiee-meta">Mas estable del grupo No-STEAM · 324 registros</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:19.0"><span>19.0%</span></div>
+            <div class="trend-seg tp" style="flex:50.0"><span>50.0%</span></div>
+            <div class="trend-seg ti" style="flex:26.7"><span>26.7%</span></div>
+            <div class="trend-seg tv" style="flex:4.3"></div>
+          </div>
+          <div class="trend-n">n = 210 estudiantes</div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--proc)">19.0%</div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:18.4"><span>18.4%</span></div>
+            <div class="trend-seg tp" style="flex:46.5"><span>46.5%</span></div>
+            <div class="trend-seg ti" style="flex:35.1"><span>35.1%</span></div>
+            <div class="trend-seg tv" style="flex:0.1"></div>
+          </div>
+          <div class="trend-n">n = 114 estudiantes <span class="trend-delta" style="background:var(--prev-lt);color:var(--prev)">↔ -0.6 pp</span></div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--proc)">18.4%</div>
+      </div>
+      <div class="grade-section">
+        <div class="grade-title">4.° Grado — variacion entre años</div>
+        <div class="grade-row"><div class="grade-lbl">4.° Grado</div><div class="grade-dots">
+          <div class="gdot"><div class="gdot-circle gc-nosteam-hi">37.3</div><div class="gdot-yr">2024</div></div>
+          <div class="gdot-arrow">→</div>
+          <div class="gdot"><div class="gdot-circle gc-warn">10.6</div><div class="gdot-yr">2025</div></div>
+        </div></div>
+        <div class="grade-row"><div class="grade-lbl">6.° Grado</div><div class="grade-dots">
+          <div class="gdot"><div class="gdot-circle gc-warn">11.7</div><div class="gdot-yr">2024</div></div>
+          <div class="gdot-arrow">→</div>
+          <div class="gdot"><div class="gdot-circle gc-nosteam">29.2</div><div class="gdot-yr">2025</div></div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- 36013 -->
+    <div class="iiee-card" style="--cc:var(--nosteam)" data-name="36013">
+      <div class="iiee-name">36013</div>
+      <div class="iiee-meta">Mejora en 2025 · 318 registros totales</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:14.8"><span>14.8%</span></div>
+            <div class="trend-seg tp" style="flex:54.0"><span>54.0%</span></div>
+            <div class="trend-seg ti" style="flex:29.0"><span>29.0%</span></div>
+            <div class="trend-seg tv" style="flex:2.3"></div>
+          </div>
+          <div class="trend-n">n = 176 estudiantes</div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--proc)">14.8%</div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:19.0"><span>19.0%</span></div>
+            <div class="trend-seg tp" style="flex:54.2"><span>54.2%</span></div>
+            <div class="trend-seg ti" style="flex:24.6"><span>24.6%</span></div>
+            <div class="trend-seg tv" style="flex:2.1"></div>
+          </div>
+          <div class="trend-n">n = 142 estudiantes <span class="trend-delta delta-up">↑ +4.2 pp</span></div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--proc)">19.0%</div>
+      </div>
+      <div class="grade-section">
+        <div class="grade-title">6.° Grado — gran salto en 2025</div>
+        <div class="grade-row"><div class="grade-lbl">6.° Grado</div><div class="grade-dots">
+          <div class="gdot"><div class="gdot-circle gc-warn">6.2</div><div class="gdot-yr">2024</div></div>
+          <div class="gdot-arrow">→</div>
+          <div class="gdot"><div class="gdot-circle gc-nosteam-hi">40.4</div><div class="gdot-yr">2025</div></div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- 36049 -->
+    <div class="iiee-card" style="--cc:var(--nosteam)" data-name="36049">
+      <div class="iiee-name">36049</div>
+      <div class="iiee-meta">Mas estable historicamente · 312 registros</div>
+      <div class="trend-row">
+        <div class="trend-year">2024</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:17.9"><span>17.9%</span></div>
+            <div class="trend-seg tp" style="flex:51.2"><span>51.2%</span></div>
+            <div class="trend-seg ti" style="flex:30.1"><span>30.1%</span></div>
+            <div class="trend-seg tv" style="flex:0.8"></div>
+          </div>
+          <div class="trend-n">n = 123 estudiantes</div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--proc)">17.9%</div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-year">2025</div>
+        <div class="trend-bar-wrap">
+          <div class="trend-bar">
+            <div class="trend-seg ts" style="flex:17.5"><span>17.5%</span></div>
+            <div class="trend-seg tp" style="flex:71.4"><span>71.4%</span></div>
+            <div class="trend-seg ti" style="flex:11.1"></div>
+            <div class="trend-seg tv" style="flex:0.1"></div>
+          </div>
+          <div class="trend-n">n = 189 estudiantes <span class="trend-delta" style="background:var(--prev-lt);color:var(--prev)">↔ -0.4 pp</span></div>
+        </div>
+        <div class="trend-sat-val" style="color:var(--proc)">17.5%</div>
+      </div>
+      <div class="grade-section">
+        <div class="grade-title">Por grado 2024 → 2025</div>
+        <div class="grade-row"><div class="grade-lbl">4.° Grado</div><div class="grade-dots">
+          <div class="gdot"><div class="gdot-circle gc-nosteam">22.0</div><div class="gdot-yr">2024</div></div>
+          <div class="gdot-arrow">→</div>
+          <div class="gdot"><div class="gdot-circle gc-warn">12.3</div><div class="gdot-yr">2025</div></div>
+        </div></div>
+        <div class="grade-row"><div class="grade-lbl">6.° Grado</div><div class="grade-dots">
+          <div class="gdot"><div class="gdot-circle gc-nosteam">19.1</div><div class="gdot-yr">2024</div></div>
+          <div class="gdot-arrow">→</div>
+          <div class="gdot"><div class="gdot-circle gc-nosteam">23.1</div><div class="gdot-yr">2025</div></div>
+        </div></div>
+      </div>
+    </div>
+
+  </div><!-- /iiee-grid nosteam -->
+</section>
+
+</div>
+<div class="panel" id="panel4">
+<!-- ══ 04. POR GRADO ══════════════════════════════════════════════ -->
+<section class="page-section" id="grados">
+  <div class="sec-eyebrow">Analisis por Grado</div>
+  <h2 class="sec-title">¿En que grado se ve mas la diferencia?</h2>
+  <p class="sec-desc">
+    El 6.° grado es donde el efecto acumulativo del STEAM deberia ser mas visible.
+    Los estudiantes de 6.° llevan mas años con el modelo pedagogico.
+  </p>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Grado</th><th>Año</th>
+        <th>STEAM — Sat%</th><th>No-STEAM — Sat%</th>
+        <th>Brecha</th><th>STEAM — Inicio%</th><th>No-STEAM — Inicio%</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2" style="font-weight:700;border-right:1px solid var(--line)">2.° Grado</td>
+        <td>2024</td>
+        <td><span class="bold-num sat-num">29.3%</span></td>
+        <td><span class="bold-num muted-num">15.8%</span></td>
+        <td><span class="stag stag-up">+13.5 pp</span></td>
+        <td>7.0%</td><td>18.6%</td>
+      </tr>
+      <tr>
+        <td>2025</td>
+        <td><span class="bold-num sat-num">29.9%</span></td>
+        <td><span class="bold-num muted-num">16.3%</span></td>
+        <td><span class="stag stag-up">+13.6 pp</span></td>
+        <td>25.0%</td><td>35.7%</td>
+      </tr>
+      <tr style="background:var(--bg)">
+        <td rowspan="2" style="font-weight:700;border-right:1px solid var(--line)">4.° Grado</td>
+        <td>2024</td>
+        <td><span class="bold-num sat-num">34.0%</span></td>
+        <td><span class="bold-num muted-num">14.5%</span></td>
+        <td><span class="stag stag-up">+19.5 pp</span></td>
+        <td>8.7%</td><td>23.4%</td>
+      </tr>
+      <tr style="background:var(--bg)">
+        <td>2025</td>
+        <td><span class="bold-num sat-num">24.0%</span></td>
+        <td><span class="bold-num muted-num">23.5%</span></td>
+        <td><span class="stag stag-neu">+0.5 pp</span></td>
+        <td>21.1%</td><td>21.7%</td>
+      </tr>
+      <tr>
+        <td rowspan="2" style="font-weight:700;border-right:1px solid var(--line)">6.° Grado</td>
+        <td>2024</td>
+        <td><span class="bold-num sat-num">37.2%</span></td>
+        <td><span class="bold-num muted-num">24.5%</span></td>
+        <td><span class="stag stag-up">+12.7 pp</span></td>
+        <td>7.4%</td><td>12.6%</td>
+      </tr>
+      <tr>
+        <td>2025</td>
+        <td><span class="bold-num muted-num">22.5%</span></td>
+        <td><span class="bold-num ini-num">10.5%</span></td>
+        <td><span class="stag stag-up">+12.0 pp</span></td>
+        <td>24.1%</td><td>37.1%</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+<div class="panel" id="panel5">
+<!-- ══ 05. FACTORES CONTEXTUALES ══════════════════════════════════ -->
+<section class="page-section" id="contexto">
+  <div class="sec-eyebrow">Mas alla del STEAM</div>
+  <h2 class="sec-title">Otros factores que explican los logros</h2>
+  <p class="sec-desc">
+    El enfoque STEAM no opera en el vacio. Los resultados de cada IIEE dependen
+    de un conjunto de factores que pueden amplificar o limitar cualquier propuesta
+    pedagogica. Aqui mostramos los que podemos observar en los datos y los que
+    sabemos que importan por evidencia educativa.
+  </p>
+
+  <!-- ── RADAR DE FACTORES ────────────────────────────────────── -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;">
+
+    <!-- Factores observables en datos -->
+    <div class="card">
+      <div class="card-t">Lo que vemos en los datos de EREHUA</div>
+      <div class="card-s">Variables extraidas directamente del dataset — 59,044 registros</div>
+
+      <!-- Tamaño -->
+      <div style="margin-bottom:18px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Tamaño de la escuela (matricula evaluada)</div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--steam);font-weight:600">37001</div><div class="hbar-t"><div class="hbar-f" style="width:100%;background:var(--steam)">1,905 est. en 2025</div></div></div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--steam);font-weight:600">36009</div><div class="hbar-t"><div class="hbar-f" style="width:54%;background:var(--steam)">1,034 est.</div></div></div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--steam);font-weight:600">36001</div><div class="hbar-t"><div class="hbar-f" style="width:51%;background:var(--steam)">964 est.</div></div></div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--steam);font-weight:600">36002</div><div class="hbar-t"><div class="hbar-f" style="width:29%;background:var(--steam)">542 est.</div></div></div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--steam);font-weight:600">36036</div><div class="hbar-t"><div class="hbar-f" style="width:26%;background:var(--steam)">491 est.</div></div></div>
+        <div style="height:1px;background:var(--line);margin:8px 0;"></div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--nosteam);font-weight:600">36004</div><div class="hbar-t"><div class="hbar-f" style="width:20%;background:var(--nosteam)">382 est.</div></div></div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--nosteam);font-weight:600">36003</div><div class="hbar-t"><div class="hbar-f" style="width:11%;background:var(--nosteam)">216 est.</div></div></div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--nosteam);font-weight:600">36013</div><div class="hbar-t"><div class="hbar-f" style="width:10%;background:var(--nosteam)">176 est.</div></div></div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--nosteam);font-weight:600">36010</div><div class="hbar-t"><div class="hbar-f" style="width:11%;background:var(--nosteam)">210 est.</div></div></div>
+        <div class="hbar-row"><div class="hbar-l" style="color:var(--nosteam);font-weight:600">36049</div><div class="hbar-t"><div class="hbar-f" style="width:10%;background:var(--nosteam)">189 est.</div></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px;font-style:italic;">Las IIEE STEAM son en promedio 4x mas grandes. Escuelas mas grandes tienen mas recursos pero tambien mas complejidad de gestion.</div>
+      </div>
+
+      <!-- Paridad de genero -->
+      <div style="margin-bottom:18px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Paridad de genero (% estudiantes femeninas)</div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:6px;">
+          <div style="text-align:center;">
+            <div style="font-size:10px;color:var(--steam);font-weight:700;margin-bottom:4px;">37001</div>
+            <div style="background:var(--steam-lt);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:13px;font-weight:800;color:var(--steam);">40.6%</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:10px;color:var(--steam);font-weight:700;margin-bottom:4px;">36001</div>
+            <div style="background:var(--sat-lt);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:12px;font-weight:800;color:var(--sat);">100% F</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:10px;color:var(--steam);font-weight:700;margin-bottom:4px;">36002</div>
+            <div style="background:var(--sat-lt);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:13px;font-weight:800;color:var(--sat);">48.6%</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:10px;color:var(--steam);font-weight:700;margin-bottom:4px;">36009</div>
+            <div style="background:var(--ini-lt);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:13px;font-weight:800;color:var(--ini);">41.4%</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:10px;color:var(--steam);font-weight:700;margin-bottom:4px;">36036</div>
+            <div style="background:var(--ini-lt);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:13px;font-weight:800;color:var(--ini);">31.9%</div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic;">36001 Las Verdes es una institucion educativa exclusiva para mujeres (100% femenino). 36004 es exclusiva para varones. Esto es importante al interpretar resultados — el genero del estudiante puede interactuar con el enfoque pedagogico. 36036 Yauli con 32% femenino refleja un contexto rural con menor acceso educativo para niñas.</div>
+        <div style="margin-top:6px;font-size:11px;color:var(--muted);font-style:italic;"><strong style="color:var(--ink2);">Confirmado:</strong> 36001 = IE exclusiva de mujeres · 36004 = IE exclusiva de varones. Los datos del archivo reflejan correctamente esta realidad.</div>
+      </div>
+
+      <!-- Cobertura de grados -->
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Cobertura de grados evaluados por año</div>
+        <table style="width:100%;font-size:12px;border-collapse:collapse;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--line);">
+              <th style="text-align:left;padding:6px 8px;color:var(--muted);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">IIEE</th>
+              <th style="text-align:center;padding:6px;color:var(--muted);font-size:10px;font-weight:700;">2024</th>
+              <th style="text-align:center;padding:6px;color:var(--muted);font-size:10px;font-weight:700;">2025</th>
+              <th style="text-align:left;padding:6px 8px;color:var(--muted);font-size:10px;font-weight:700;">Observacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:6px 8px;color:var(--steam);font-weight:600;">37001</td><td style="text-align:center;padding:6px;">4.° 6.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--muted);">Suma 2.° en 2025</td></tr>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:6px 8px;color:var(--steam);font-weight:600;">36001</td><td style="text-align:center;padding:6px;">4.° 6.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--muted);">Cobertura completa</td></tr>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:6px 8px;color:var(--steam);font-weight:600;">36002</td><td style="text-align:center;padding:6px;">2.° 4.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--muted);">Sin 6.° en 2024</td></tr>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:6px 8px;color:var(--steam);font-weight:600;">36009</td><td style="text-align:center;padding:6px;">4.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--ini);font-weight:600;">Solo 1 grado en 2024</td></tr>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:6px 8px;color:var(--steam);font-weight:600;">36036</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--sat);font-weight:600;">Mas consistente</td></tr>
+            <tr style="border-bottom:1px solid var(--line);background:rgba(194,84,26,.02);"><td style="padding:6px 8px;color:var(--nosteam);font-weight:600;">36004</td><td style="text-align:center;padding:6px;">4.° 6.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--muted);">Suma 2.° en 2025</td></tr>
+            <tr style="border-bottom:1px solid var(--line);background:rgba(194,84,26,.02);"><td style="padding:6px 8px;color:var(--nosteam);font-weight:600;">36003</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--muted);">Cobertura completa</td></tr>
+            <tr style="border-bottom:1px solid var(--line);background:rgba(194,84,26,.02);"><td style="padding:6px 8px;color:var(--nosteam);font-weight:600;">36010</td><td style="text-align:center;padding:6px;">4.° 6.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--muted);">Suma 2.° en 2025</td></tr>
+            <tr style="border-bottom:1px solid var(--line);background:rgba(194,84,26,.02);"><td style="padding:6px 8px;color:var(--nosteam);font-weight:600;">36013</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--muted);">Cobertura completa</td></tr>
+            <tr style="background:rgba(194,84,26,.02);"><td style="padding:6px 8px;color:var(--nosteam);font-weight:600;">36049</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="text-align:center;padding:6px;">2.° 4.° 6.°</td><td style="padding:6px 8px;color:var(--muted);">Cobertura completa</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;">La cobertura parcial de grados afecta la comparabilidad entre años. 36009 con solo 4.° en 2024 tiene menor base de comparacion.</div>
+      </div>
+    </div>
+
+    <!-- Factores no observables pero documentados -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <div class="card" style="border-left:4px solid var(--steam);">
+        <div class="card-t">Liderazgo directivo</div>
+        <div class="card-s">Factor con mayor impacto segun evidencia internacional (Hattie, LLECE)</div>
+        <p style="font-size:13px;color:var(--ink2);line-height:1.7;">Un director que observa clases, da retroalimentacion a sus docentes y resuelve problemas de gestion rapidamente puede multiplicar el efecto de cualquier programa pedagogico. <strong>36001 Las Verdes</strong> — la IIEE con mejor desempeño sostenido según lo observado cuenta con liderazgo directivo estable y comprometido. Se recomienda documentar y compartir sus practicas de gestion.</p>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--ink2);">
+          <strong>Señal en datos:</strong> las IIEE con mayor crecimiento entre años (36009 +21 pp, 36036 +15 pp) sugieren cambios de gestion o acompañamiento intensivo en ese periodo.
+        </div>
+      </div>
+
+      <div class="card" style="border-left:4px solid var(--proc);">
+        <div class="card-t">Estabilidad y formacion docente</div>
+        <div class="card-s">La rotacion docente interrumpe secuencias pedagogicas</div>
+        <p style="font-size:13px;color:var(--ink2);line-height:1.7;">Una escuela donde el profesor cambia cada año no puede construir aprendizajes acumulativos. El STEAM requiere docentes que lo practiquen con continuidad. La baja paridad de genero en <strong>36036 Yauli</strong> (32% femenino) puede reflejar un contexto rural con mayor rotacion docente y menor acceso de las familias al sistema educativo.</p>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--ink2);">
+          <strong>Señal en datos:</strong> el efecto acumulativo 4.° → 6.° deberia aumentar si los docentes son estables. En 36001 ese efecto es de +19 pp; en 36036 solo +1.2 pp — posible indicador de mayor rotacion.
+        </div>
+      </div>
+
+      <div class="card" style="border-left:4px solid var(--ini);">
+        <div class="card-t">Condiciones del estudiante y su familia</div>
+        <div class="card-s">Nutricion, lengua materna y acompañamiento familiar</div>
+        <p style="font-size:13px;color:var(--ink2);line-height:1.7;">En Huancavelica la anemia infantil afecta entre 40-55% de niños segun ENDES, lo que impacta directamente la capacidad de atencion y memoria. Ademas, muchos estudiantes son quechuahablantes evaluados en castellano. Las IIEE con resultados mas bajos suelen estar en zonas con mayor vulnerabilidad socieconomica, no necesariamente por falta de calidad docente.</p>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--ink2);">
+          <strong>Señal en datos:</strong> 36036 Yauli tiene la mayor proporcion de varones (68%) lo que puede reflejar una zona donde las niñas tienen menor acceso — indicador de vulnerabilidad territorial.
+        </div>
+      </div>
+
+      <div class="card" style="border-left:4px solid var(--sat);">
+        <div class="card-t">Tiempo efectivo de instruccion</div>
+        <div class="card-s">Horas reales de ensenanza, no horas de calendario</div>
+        <p style="font-size:13px;color:var(--ink2);line-height:1.7;">Las escuelas multigrado y unidocentes de la sierra pierden mas tiempo lectivo por inasistencia docente, viajes a la capital provincial, actividades civicas y tramites administrativos. Las IIEE STEAM de mayor matricula (37001, 36001) tienen mas docentes y por tanto mas posibilidad de cubrir ausencias sin perder dias de clase.</p>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--ink2);">
+          <strong>Señal en datos:</strong> la cobertura de 3 grados evaluados (2.°, 4.°, 6.°) indica escuelas polidocentes con suficiente personal — ventaja estructural de las IIEE STEAM de mayor tamaño.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── TABLA INTEGRADORA ─────────────────────────────────────── -->
+  <div class="card">
+    <div class="card-t">Mapa de factores por IIEE — Lo que los datos permiten inferir</div>
+    <div class="card-s">Interpretacion basada en datos EREHUA + evidencia educativa regional. Verde = favorable · Amarillo = moderado · Rojo = limitante</div>
+    <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:700px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--line);background:var(--bg);">
+          <th style="text-align:left;padding:10px 14px;color:var(--muted);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">IIEE</th>
+          <th style="text-align:center;padding:10px 8px;color:var(--muted);font-size:10px;font-weight:700;">Tamaño</th>
+          <th style="text-align:center;padding:10px 8px;color:var(--muted);font-size:10px;font-weight:700;">Paridad genero</th>
+          <th style="text-align:center;padding:10px 8px;color:var(--muted);font-size:10px;font-weight:700;">Efecto acumulativo 4°→6°</th>
+          <th style="text-align:center;padding:10px 8px;color:var(--muted);font-size:10px;font-weight:700;">Crecimiento 2024→25</th>
+          <th style="text-align:center;padding:10px 8px;color:var(--muted);font-size:10px;font-weight:700;">Cobertura grados</th>
+          <th style="text-align:left;padding:10px 14px;color:var(--muted);font-size:10px;font-weight:700;">Lectura contextual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--steam);">37001 PEPIN</td>
+          <td style="text-align:center;padding:8px;">🟢 Grande</td>
+          <td style="text-align:center;padding:8px;">🟡 40.6% F</td>
+          <td style="text-align:center;padding:8px;">🟢 +12.3 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 +14.4 pp</td>
+          <td style="text-align:center;padding:8px;">🟡 2 grados 2024</td>
+          <td style="padding:8px 14px;color:var(--ink2);">Escuela urbana grande con condiciones favorables. Paridad a 40.6% F sugiere zona con algunas brechas de acceso para niñas.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);background:rgba(42,125,79,.03);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--sat);">36001 Las Verdes ⭐</td>
+          <td style="text-align:center;padding:8px;">🟢 Mediana</td>
+          <td style="text-align:center;padding:8px;">🟢 100% F</td>
+          <td style="text-align:center;padding:8px;">🟢 +19.1 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 +12.1 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 3 grados ambos</td>
+          <td style="padding:8px 14px;color:var(--ink2);">IE exclusiva de mujeres. Todos los indicadores favorables — efecto acumulativo maximo y unica IIEE con mejora sostenida. Modelo de buenas practicas para la red STEAM.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--steam);">36002 Azules</td>
+          <td style="text-align:center;padding:8px;">🟡 Mediana</td>
+          <td style="text-align:center;padding:8px;">🟢 48.6% F</td>
+          <td style="text-align:center;padding:8px;">🔴 Sin 6.° en 2025</td>
+          <td style="text-align:center;padding:8px;">🟢 +11.2 pp</td>
+          <td style="text-align:center;padding:8px;">🟡 Sin 6.° en 2024</td>
+          <td style="padding:8px 14px;color:var(--ink2);">Buena paridad y crecimiento. La falta de 6.° en ambos años limita medir el efecto acumulativo real.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--steam);">36009 Ordaya</td>
+          <td style="text-align:center;padding:8px;">🟢 Grande</td>
+          <td style="text-align:center;padding:8px;">🟡 41.4% F</td>
+          <td style="text-align:center;padding:8px;">🔴 Sin 6.° en 2025</td>
+          <td style="text-align:center;padding:8px;">🟢 +21.4 pp</td>
+          <td style="text-align:center;padding:8px;">🔴 1 grado en 2024</td>
+          <td style="padding:8px 14px;color:var(--ink2);">Mayor crecimiento STEAM. Con solo 4.° en 2024, la comparacion es limitada. El salto puede deberse a mejora real o a diferencia de composicion de grados.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--steam);">36036 Yauli</td>
+          <td style="text-align:center;padding:8px;">🟡 Mediana</td>
+          <td style="text-align:center;padding:8px;">🔴 31.9% F</td>
+          <td style="text-align:center;padding:8px;">🟡 +1.2 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 +15.5 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 3 grados ambos</td>
+          <td style="padding:8px 14px;color:var(--ink2);">Zona mas vulnerable (baja paridad). El STEAM mejora los resultados pero el efecto acumulativo es minimo — posible rotacion docente alta o contexto familiar mas dificil.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);background:rgba(194,84,26,.03);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--nosteam);">36004</td>
+          <td style="text-align:center;padding:8px;">🟡 Mediana</td>
+          <td style="text-align:center;padding:8px;">🔵 100% M</td>
+          <td style="text-align:center;padding:8px;">🟡 +0.3 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 +10.7 pp</td>
+          <td style="text-align:center;padding:8px;">🟡 2 grados 2024</td>
+          <td style="padding:8px 14px;color:var(--ink2);">IE exclusiva de varones. Mejoro en 2025 (+10.7 pp). Sin efecto acumulativo marcado — resultados similares entre grados.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);background:rgba(194,84,26,.03);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--nosteam);">36003</td>
+          <td style="text-align:center;padding:8px;">🔴 Pequeña</td>
+          <td style="text-align:center;padding:8px;">🟡 31.0% F</td>
+          <td style="text-align:center;padding:8px;">🔴 -3.7 pp</td>
+          <td style="text-align:center;padding:8px;">🔴 -5.6 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 3 grados ambos</td>
+          <td style="padding:8px 14px;color:var(--ink2);">Escuela pequeña, baja paridad, resultados decrecientes en todos los indicadores. Posible zona muy vulnerable con alta rotacion docente.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);background:rgba(194,84,26,.03);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--nosteam);">36010</td>
+          <td style="text-align:center;padding:8px;">🔴 Pequeña</td>
+          <td style="text-align:center;padding:8px;">🟢 54.9% F</td>
+          <td style="text-align:center;padding:8px;">🟡 +18.6 pp</td>
+          <td style="text-align:center;padding:8px;">🟡 -0.6 pp</td>
+          <td style="text-align:center;padding:8px;">🟡 2 grados 2024</td>
+          <td style="padding:8px 14px;color:var(--ink2);">Alta paridad y buen efecto acumulativo a pesar de ser pequeña. Podria beneficiarse del STEAM — tiene condiciones favorables subyacentes.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--line);background:rgba(194,84,26,.03);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--nosteam);">36013</td>
+          <td style="text-align:center;padding:8px;">🔴 Pequeña</td>
+          <td style="text-align:center;padding:8px;">🟢 52.5% F</td>
+          <td style="text-align:center;padding:8px;">🟢 +35.9 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 +4.2 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 3 grados ambos</td>
+          <td style="padding:8px 14px;color:var(--ink2);">El mayor efecto acumulativo de todo el grupo (+35.9 pp de 4.° a 6.°) sin ser STEAM es llamativo — podria tener un docente de 6.° excepcionalmente eficaz o algun factor puntual.</td>
+        </tr>
+        <tr style="background:rgba(194,84,26,.03);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--nosteam);">36049</td>
+          <td style="text-align:center;padding:8px;">🔴 Pequeña</td>
+          <td style="text-align:center;padding:8px;">🟢 50.3% F</td>
+          <td style="text-align:center;padding:8px;">🟡 +10.8 pp</td>
+          <td style="text-align:center;padding:8px;">🟡 -0.4 pp</td>
+          <td style="text-align:center;padding:8px;">🟢 3 grados ambos</td>
+          <td style="padding:8px 14px;color:var(--ink2);">La mas estable del grupo No-STEAM. Buena paridad y cobertura completa. Buenos candidatos para piloto STEAM si se incorporan nuevas IIEE.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ── LECTURA INTEGRADORA ───────────────────────────────────── -->
+  <div style="background:var(--unicef-navy);color:#fff;border-radius:var(--r);padding:32px 36px;margin-top:8px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:12px;">Lectura integradora</div>
+    <h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:16px;line-height:1.3;">El STEAM es necesario pero debe integrarse</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Lo que el STEAM aporta</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.7;">Una metodologia que aumenta la motivacion, conecta el aprendizaje con la vida real y desarrolla competencias de pensamiento cientifico. Los datos muestran que las 5 IIEE STEAM crecieron mas que las 5 No-STEAM entre 2024 y 2025.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Lo que el STEAM no puede solo</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.7;">No puede compensar la anemia infantil, la rotacion docente, el ausentismo, la distancia geografica ni la baja participacion familiar. Estos factores explican por que 36036 Yauli, siendo STEAM, tiene resultados menores que 36010 No-STEAM en algunos indicadores.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">La combinacion ganadora</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.7;">36001 Las Verdes lo demuestra: STEAM + liderazgo directivo + docentes estables + escuela exclusiva de mujeres con fuerte identidad institucional = crecimiento sostenido en todos los grados. El STEAM funciona mejor cuando actua sobre condiciones institucionales ya favorables.</p>
       </div>
     </div>
   </div>
 
-  <!-- ══ COMPARATIVO ══ -->
-  <div class="section" id="sec-comp">
-    <div class="sec-header"><h1>STEAM vs. Instituciones sin STEAM</h1><p>Contraste entre las 5 IIEE STEAM y 4 instituciones de la UGEL sin enfoque STEAM con los niveles de C más elevados.</p></div>
-    <div class="kpi-grid">
-      <div class="kpi" style="--kc:var(--sat)"><div class="kpi-lbl">%C Promedio STEAM</div><div class="kpi-val">0.4%</div><div class="kpi-sub">5 IIEE STEAM</div></div>
-      <div class="kpi" style="--kc:var(--inicio)"><div class="kpi-lbl">%C Promedio No-STEAM</div><div class="kpi-val">5.2%</div><div class="kpi-sub">4 IIEE comparación</div></div>
-      <div class="kpi" style="--kc:var(--amber)"><div class="kpi-lbl">Brecha máxima C</div><div class="kpi-val">+4.8 pp</div><div class="kpi-sub">36293 vs. grupo STEAM</div></div>
-      <div class="kpi" style="--kc:var(--teal)"><div class="kpi-lbl">Reducción relativa C</div><div class="kpi-val">92.3%</div><div class="kpi-sub">Menos riesgo de no-logro</div></div>
+</section>
+
+</div>
+<div class="panel" id="panel6">
+<!-- ══ 06. HALLAZGOS ══════════════════════════════════════════════ -->
+<section class="page-section" id="hallazgos">
+  <div class="sec-eyebrow">Conclusiones</div>
+  <h2 class="sec-title">Lo que nos dicen los datos</h2>
+  <p class="sec-desc">Seis hallazgos clave del analisis historico EREHUA 2024–2025.</p>
+
+  <div class="insight-grid">
+    <div class="insight-card" style="--ic:var(--sat)">
+      <div class="insight-icon">📊</div>
+      <div class="insight-title">La brecha STEAM persiste en ambos años</div>
+      <div class="insight-body">Las IIEE STEAM superan al grupo No-STEAM en Satisfactorio tanto en 2024 (+4.1 pp) como en 2025 (+17.3 pp). La brecha se amplió en 2025, lo que evidencia que el impacto del STEAM se consolida con el tiempo.</div>
+      <div class="insight-highlight">2024: 20.8% vs 16.7% · 2025: 35.7% vs 18.4%</div>
     </div>
-    <div class="g2">
-      <div class="cc"><div class="cc-title">%AD — STEAM vs No-STEAM</div><canvas class="cv" id="c-cad" height="250"></canvas></div>
-      <div class="cc"><div class="cc-title">%C — STEAM vs No-STEAM</div><canvas class="cv" id="c-cc" height="250"></canvas></div>
+
+    <div class="insight-card" style="--ic:var(--sat)">
+      <div class="insight-icon">⭐</div>
+      <div class="insight-title">36001 Las Verdes: el modelo a seguir</div>
+      <div class="insight-body">Unica IIEE del grupo STEAM que mejoro entre 2024 y 2025 (+12.1 pp). Su 6.° grado logro 47.5% Satisfactorio en 2025. Sus practicas pedagogicas deben documentarse y replicarse en la red STEAM.</div>
+      <div class="insight-highlight">6.° grado 2025: 47.5% Satisfactorio</div>
     </div>
-    <div class="cc">
-      <div class="cc-title">Perfil Completo — STEAM vs No-STEAM</div>
-      <div class="legend">
-        <div class="leg-item"><div class="leg-dot" style="background:var(--ad)"></div>AD</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--a)"></div>A</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--b)"></div>B</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--c)"></div>C</div>
-      </div>
-      <div id="sb-comp"></div>
+
+    <div class="insight-card" style="--ic:var(--ini)">
+      <div class="insight-icon">⚠</div>
+      <div class="insight-title">36009 Ordaya: atencion urgente</div>
+      <div class="insight-body">Cayo 21.4 pp en Satisfactorio. Su 6.° grado en 2025 tiene apenas 9.2% Satisfactorio y 39% En Inicio. La brecha entre resultados internos y externos es la mayor del grupo.</div>
+      <div class="insight-highlight">6.° grado 2025: 9.2% Sat · 39% En Inicio</div>
     </div>
-    <div class="insights">
-      <div class="insight" style="--ic:var(--sat)"><div class="insight-t">✅ Impacto STEAM en nivel C</div><div class="insight-b">Las IIEE STEAM promedian 0.4% en nivel C frente al 5.2% del grupo sin STEAM — reducción relativa del 92.3% en el riesgo de no-logro.</div></div>
-      <div class="insight" style="--ic:var(--ad)"><div class="insight-t">📊 Brecha en AD</div><div class="insight-b">La I.E. 36293 sin STEAM tiene apenas 0.5% de AD, mientras las IIEE STEAM promedian 19.7% AD — una diferencia sistémica de 19.2 pp.</div></div>
-      <div class="insight" style="--ic:var(--orange)"><div class="insight-t">⚠ Limitaciones metodológicas</div><div class="insight-b">La brecha no puede atribuirse exclusivamente al STEAM. Intervienen NSE, formación docente y gestión directiva. La consistencia en 5 IIEE refuerza la hipótesis del efecto positivo.</div></div>
-      <div class="insight" style="--ic:var(--teal)"><div class="insight-t">🎯 Recomendación</div><div class="insight-b">Se sugiere iniciar acompañamiento STEAM en las IIEE 36293, 36367, 36390 y 36350 dado el alto diferencial en nivel C respecto al grupo STEAM.</div></div>
+
+    <div class="insight-card" style="--ic:var(--proc)">
+      <div class="insight-icon">🔍</div>
+      <div class="insight-title">El STEAM crece mas en 2025</div>
+      <div class="insight-body">El grupo STEAM paso de 20.8% a 35.7% de Satisfactorio (+14.9 pp), mientras el No-STEAM subio de 16.7% a 18.4% (+1.7 pp). La ventaja STEAM se amplio de 4 a 17 puntos porcentuales en un año.</div>
+      <div class="insight-highlight">STEAM +14.9 pp · No-STEAM +1.7 pp en 2025</div>
+    </div>
+
+    <div class="insight-card" style="--ic:var(--steam)">
+      <div class="insight-icon">📈</div>
+      <div class="insight-title">El 6.° grado es el indicador mas revelador</div>
+      <div class="insight-body">En 6.° grado (estudiantes con mas anos de exposicion al STEAM) la brecha se mantiene en +12 pp en ambos años. Este grado captura mejor el efecto acumulativo del modelo pedagogico.</div>
+      <div class="insight-highlight">Brecha en 6.°: +12.7 pp (2024) y +12.0 pp (2025)</div>
+    </div>
+
+    <div class="insight-card" style="--ic:var(--nosteam)">
+      <div class="insight-icon">🎯</div>
+      <div class="insight-title">Recomendacion: expansion STEAM</div>
+      <div class="insight-body">Las IIEE No-STEAM promedian 16–19% Satisfactorio en ambos años. Con acompañamiento STEAM, la experiencia de 36001 Las Verdes muestra que se puede superar el 40% en 6.° grado.</div>
+      <div class="insight-highlight">Meta alcanzable: >35% Satisfactorio en 6.° grado</div>
     </div>
   </div>
-</main>
+</section>
+
+</div>
+<!-- FOOTER -->
+<footer class="footer">
+  <strong>Fuente:</strong> Sistema EREHUA — Evaluacion Regional de Huancavelica · Años 2024 y 2025 · 59,044 registros procesados<br/>
+  Elaborado para fines de análisis - UNICEF <br/>
+</footer>
+
+</div><!-- /main -->
 
 <script>
-// ══ DATA ═════════════════════════════════════════════════════════
-const D = {
-  '37001':{n:'37001 — PEPIN',    total:721, ad:22.0,a:74.9,b:3.1,c:0.1,
-    ar:{'Mat':{ad:25.6,a:71.3,b:3.1,c:0.0},'Com':{ad:24.5,a:72.6,b:2.8,c:0.0},'CyT':{ad:15.8,a:80.7,b:3.3,c:0.1}},
-    gr:{'4.°':{ad:17.0,a:77.5,b:5.3,c:0.2,n:269},'5.°':{ad:15.4,a:81.2,b:3.3,c:0.0,n:210},'6.°':{ad:33.2,a:66.5,b:0.3,c:0.0,n:242}}},
-  '36001':{n:'36001 — LAS VERDES',total:386,ad:23.8,a:72.2,b:3.9,c:0.0,
-    ar:{'Mat':{ad:23.9,a:72.5,b:3.5,c:0.0},'Com':{ad:26.0,a:67.8,b:6.2,c:0.0},'CyT':{ad:21.6,a:76.3,b:2.1,c:0.0}},
-    gr:{'4.°':{ad:25.4,a:73.3,b:1.3,c:0.0,n:131},'5.°':{ad:25.9,a:66.9,b:7.1,c:0.0,n:126},'6.°':{ad:20.2,a:76.4,b:3.4,c:0.0,n:129}}},
-  '36002':{n:'36002 — AZULES',   total:228,ad:25.2,a:73.1,b:1.8,c:0.0,
-    ar:{'Mat':{ad:23.6,a:73.7,b:2.8,c:0.0},'Com':{ad:26.9,a:72.0,b:1.2,c:0.0},'CyT':{ad:25.0,a:73.6,b:1.5,c:0.0}},
-    gr:{'4.°':{ad:18.0,a:76.1,b:5.9,c:0.0,n:69},'5.°':{ad:22.6,a:77.4,b:0.0,c:0.0,n:77},'6.°':{ad:33.5,a:66.5,b:0.0,c:0.0,n:82}}},
-  '36009':{n:'36009 — JOSE ORDAYA',total:450,ad:17.7,a:72.9,b:8.9,c:0.6,
-    ar:{'Mat':{ad:17.9,a:71.0,b:10.8,c:0.4},'Com':{ad:18.4,a:73.7,b:7.5,c:0.4},'CyT':{ad:16.8,a:73.9,b:8.4,c:0.9}},
-    gr:{'4.°':{ad:25.9,a:62.8,b:11.3,c:0.0,n:140},'5.°':{ad:14.4,a:69.6,b:14.3,c:1.7,n:155},'6.°':{ad:13.6,a:85.2,b:1.3,c:0.0,n:155}}},
-  '36036':{n:'36036 — YAULI',    total:201,ad:9.6, a:82.5,b:6.6,c:1.3,
-    ar:{'Mat':{ad:10.9,a:80.3,b:7.9,c:1.0},'Com':{ad:10.3,a:81.9,b:5.8,c:2.0},'CyT':{ad:7.7,a:85.4,b:6.0,c:1.0}},
-    gr:{'4.°':{ad:1.8,a:82.2,b:13.4,c:2.7,n:62},'5.°':{ad:12.5,a:80.0,b:7.5,c:0.0,n:65},'6.°':{ad:13.6,a:85.1,b:0.0,c:1.4,n:74}}}
-};
-const KEYS=['37001','36001','36002','36009','36036'];
-const COLS=['#14A3A6','#3B82F6','#22C55E','#F59E0B','#A855F7'];
-const COMP=[
-  {id:'36293',g:'No-STEAM',n:95, ad:0.5,a:91.3,b:3.0,c:5.2},
-  {id:'36367',g:'No-STEAM',n:30, ad:7.8,a:78.1,b:8.5,c:5.7},
-  {id:'36390',g:'No-STEAM',n:60, ad:6.0,a:80.0,b:9.1,c:4.9},
-  {id:'36350',g:'No-STEAM',n:40, ad:14.7,a:76.9,b:3.3,c:5.0}
-];
-const ER={
-  '37001':{g4:{mat:{s:32.7,p:53.9,i:13.1,pr:0.4},com:{s:28.4,p:55.2,i:16.5,pr:0},cyt:{s:24.2,p:60.8,i:13.9,pr:1.2}},
-           g6:{mat:{s:14.0,p:43.2,i:40.2,pr:2.6},com:{s:21.0,p:66.1,i:12.5,pr:0.4},cyt:{s:33.3,p:53.1,i:13.2,pr:0.4}}},
-  '36001':{g4:{mat:{s:33.1,p:39.4,i:26.8,pr:0.8},com:{s:26.5,p:52.1,i:19.8,pr:1.7},cyt:{s:25.8,p:50.8,i:20.8,pr:2.5}},
-           g6:{mat:{s:62.5,p:37.5,i:0,pr:0},com:{s:25.0,p:57.3,i:14.5,pr:3.2},cyt:{s:57.9,p:38.8,i:3.3,pr:0}}},
-  '36002':{g4:{mat:{s:25.4,p:52.2,i:22.4,pr:0},com:{s:0,p:69.6,i:21.7,pr:7.3},cyt:{s:55.4,p:27.7,i:16.9,pr:0}},
-           g6:{mat:{s:0,p:52.6,i:46.2,pr:1.3},com:{s:10.7,p:65.3,i:21.3,pr:2.7},cyt:{s:43.2,p:46.0,i:10.8,pr:0}}},
-  '36009':{g4:{mat:{s:12.6,p:55.5,i:26.9,pr:5.0},com:{s:16.5,p:44.6,i:32.2,pr:6.6},cyt:{s:20.8,p:50.4,i:25.6,pr:3.2}},
-           g6:{mat:{s:23.8,p:23.8,i:67.8,pr:5.6},com:{s:7.5,p:67.1,i:22.6,pr:2.8},cyt:{s:17.4,p:53.5,i:27.1,pr:2.1}}},
-  '36036':{g4:{mat:{s:10.7,p:57.1,i:30.4,pr:1.8},com:{s:0,p:57.1,i:33.9,pr:8.9},cyt:{s:0,p:55.6,i:40.7,pr:3.7}},
-           g6:{mat:{s:8.6,p:52.9,i:35.7,pr:2.9},com:{s:17.9,p:56.7,i:20.9,pr:4.5},cyt:{s:13.4,p:61.2,i:23.9,pr:1.5}}}
-};
+// == PANEL NAVIGATION ==========================================
+let currentPanel = 0;
+const TOTAL = 7;
 
-// ══ MINI CANVAS CHARTS ════════════════════════════════════════════
-// A lightweight charting engine without any external dependencies
-
-function getC(id){return document.getElementById(id);}
-
-// ── Bar chart ─────────────────────────────────────────────────────
-function drawBar(canvasId, labels, datasets, opts={}){
-  const cv=getC(canvasId); if(!cv) return;
-  const W=cv.offsetWidth||cv.parentElement.offsetWidth||600;
-  cv.width=W; cv.height=cv.height||220;
-  const ctx=cv.getContext('2d');
-  const H=cv.height;
-  const pad={t:20,r:20,b:50,l:48};
-  const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
-  ctx.clearRect(0,0,W,H);
-
-  const n=labels.length;
-  const nDS=datasets.length;
-  const grpW=cW/n;
-  const barW=Math.max(4, grpW/nDS*0.72);
-  const gap=(grpW - barW*nDS)/(nDS+1);
-
-  // max val
-  let maxV=opts.stacked
-    ? Math.max(...labels.map((_,i)=>datasets.reduce((s,ds)=>s+(ds.data[i]||0),0)))
-    : Math.max(...datasets.flatMap(ds=>ds.data));
-  maxV=Math.ceil(maxV/10)*10||100;
-
-  // grid
-  ctx.strokeStyle='rgba(255,255,255,.05)'; ctx.lineWidth=1;
-  for(let i=0;i<=5;i++){
-    const y=pad.t+cH - (i/5)*cH;
-    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(pad.l+cW,y); ctx.stroke();
-    ctx.fillStyle='#7A93B8'; ctx.font='10px Arial'; ctx.textAlign='right';
-    ctx.fillText((maxV*i/5).toFixed(0)+'%', pad.l-4, y+3);
-  }
-
-  // bars
-  labels.forEach((lbl,i)=>{
-    const x0=pad.l+i*grpW;
-    if(opts.stacked){
-      let bottom=0;
-      datasets.forEach(ds=>{
-        const v=ds.data[i]||0;
-        const bH=v/maxV*cH;
-        const x=x0+grpW*0.1;
-        const bw=grpW*0.8;
-        ctx.fillStyle=ds.color;
-        ctx.beginPath();
-        ctx.roundRect(x, pad.t+cH-bottom-bH, bw, bH, bottom===0?[3,3,0,0]:[0,0,0,0]);
-        ctx.fill();
-        if(v>5){
-          ctx.fillStyle='rgba(255,255,255,.85)'; ctx.font='bold 10px Arial'; ctx.textAlign='center';
-          ctx.fillText(v.toFixed(0)+'%', x+bw/2, pad.t+cH-bottom-bH/2+4);
-        }
-        bottom+=bH;
-      });
-    } else {
-      datasets.forEach((ds,di)=>{
-        const v=ds.data[i]||0;
-        const bH=v/maxV*cH;
-        const x=x0+gap*(di+1)+barW*di;
-        ctx.fillStyle=ds.color;
-        ctx.beginPath(); ctx.roundRect(x,pad.t+cH-bH,barW,bH,[3,3,0,0]); ctx.fill();
-        if(bH>16 && barW>20){
-          ctx.fillStyle='rgba(255,255,255,.8)'; ctx.font='bold 9px Arial'; ctx.textAlign='center';
-          ctx.fillText(v.toFixed(1)+'%', x+barW/2, pad.t+cH-bH+12);
-        }
-      });
-    }
-
-    // label
-    ctx.fillStyle='#7A93B8'; ctx.font='11px Arial'; ctx.textAlign='center';
-    const lblParts=lbl.split('\n');
-    lblParts.forEach((p,pi)=>ctx.fillText(p, x0+grpW/2, pad.t+cH+14+pi*12));
-  });
-
-  // goal line
-  if(opts.goal){
-    const gy=pad.t+cH - opts.goal/maxV*cH;
-    ctx.strokeStyle='rgba(255,255,255,.35)'; ctx.setLineDash([5,4]); ctx.lineWidth=1.5;
-    ctx.beginPath(); ctx.moveTo(pad.l,gy); ctx.lineTo(pad.l+cW,gy); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle='rgba(255,255,255,.5)'; ctx.font='10px Arial'; ctx.textAlign='right';
-    ctx.fillText('Meta '+opts.goal+'%', pad.l+cW, gy-4);
-  }
-
-  // ref line
-  if(opts.refLine!==undefined){
-    const ry=pad.t+cH - opts.refLine/maxV*cH;
-    ctx.strokeStyle='rgba(232,168,56,.6)'; ctx.setLineDash([4,4]); ctx.lineWidth=1.5;
-    ctx.beginPath(); ctx.moveTo(pad.l,ry); ctx.lineTo(pad.l+cW,ry); ctx.stroke();
-    ctx.setLineDash([]);
-  }
-
-  // legend if multiple datasets
-  if(nDS>1&&!opts.hideLegend){
-    let lx=pad.l; const ly=H-8;
-    datasets.forEach(ds=>{
-      ctx.fillStyle=ds.color; ctx.beginPath(); ctx.roundRect(lx,ly-8,10,10,[2]); ctx.fill();
-      ctx.fillStyle='#7A93B8'; ctx.font='10px Arial'; ctx.textAlign='left';
-      const w=ctx.measureText(ds.label).width;
-      ctx.fillText(ds.label||'',lx+13,ly+1); lx+=w+22;
-    });
-  }
+function showPanel(idx, btn) {
+  // Hide all panels
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  // Show target
+  document.getElementById('panel' + idx).classList.add('active');
+  if(btn) btn.classList.add('active');
+  else document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+  currentPanel = idx;
+  // Update prev/next
+  document.getElementById('btnPrev').disabled = (idx === 0);
+  document.getElementById('btnNext').disabled = (idx === TOTAL - 1);
+  document.getElementById('btnNext').textContent = idx === TOTAL - 2 ? 'Hallazgos ->' : 'Siguiente ->';
+  // Progress bar
+  const pct = ((idx + 1) / TOTAL * 100).toFixed(1);
+  document.getElementById('progressFill').style.width = pct + '%';
+  // Scroll to top
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// ── Line chart ────────────────────────────────────────────────────
-function drawLine(canvasId, labels, datasets, opts={}){
-  const cv=getC(canvasId); if(!cv) return;
-  const W=cv.offsetWidth||cv.parentElement.offsetWidth||600;
-  cv.width=W; cv.height=cv.height||220;
-  const ctx=cv.getContext('2d');
-  const H=cv.height;
-  const pad={t:20,r:20,b:50,l:48};
-  const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
-  ctx.clearRect(0,0,W,H);
-
-  const n=labels.length;
-  let maxV=Math.max(...datasets.flatMap(ds=>ds.data));
-  maxV=Math.ceil(maxV/10)*10||100;
-
-  ctx.strokeStyle='rgba(255,255,255,.05)'; ctx.lineWidth=1;
-  for(let i=0;i<=5;i++){
-    const y=pad.t+cH-(i/5)*cH;
-    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(pad.l+cW,y); ctx.stroke();
-    ctx.fillStyle='#7A93B8'; ctx.font='10px Arial'; ctx.textAlign='right';
-    ctx.fillText((maxV*i/5).toFixed(0)+'%', pad.l-4, y+3);
-  }
-
-  const xStep=cW/(n-1||1);
-  datasets.forEach(ds=>{
-    ctx.strokeStyle=ds.color; ctx.lineWidth=2.5; ctx.setLineDash(ds.dash||[]);
-    ctx.beginPath();
-    ds.data.forEach((v,i)=>{
-      const x=pad.l+i*xStep, y=pad.t+cH-v/maxV*cH;
-      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-    });
-    ctx.stroke(); ctx.setLineDash([]);
-    if(!ds.noPoints) ds.data.forEach((v,i)=>{
-      const x=pad.l+i*xStep, y=pad.t+cH-v/maxV*cH;
-      ctx.fillStyle=ds.color; ctx.beginPath(); ctx.arc(x,y,4,0,Math.PI*2); ctx.fill();
-      ctx.fillStyle='rgba(255,255,255,.85)'; ctx.font='bold 10px Arial'; ctx.textAlign='center';
-      ctx.fillText(v.toFixed(1)+'%', x, y-8);
-    });
-  });
-
-  labels.forEach((lbl,i)=>{
-    ctx.fillStyle='#7A93B8'; ctx.font='11px Arial'; ctx.textAlign='center';
-    ctx.fillText(lbl, pad.l+i*xStep, pad.t+cH+16);
-  });
-
-  // legend
-  let lx=pad.l; const ly=H-8;
-  datasets.forEach(ds=>{
-    ctx.fillStyle=ds.color; ctx.beginPath(); ctx.rect(lx,ly-8,12,4); ctx.fill();
-    ctx.fillStyle='#7A93B8'; ctx.font='10px Arial'; ctx.textAlign='left';
-    const w=ctx.measureText(ds.label||'').width;
-    ctx.fillText(ds.label||'',lx+15,ly+1); lx+=w+24;
-  });
+function navigate(dir) {
+  let next = currentPanel + dir;
+  // Skip panels 4 (Por Grado) and 6 (Hallazgos) - no buttons for them
+  while(next >= 0 && next < TOTAL && (next === 4 || next === 6)) next += dir;
+  if(next >= 0 && next < TOTAL) showPanel(next, null);
 }
 
-// ── Donut chart ───────────────────────────────────────────────────
-function drawDonut(canvasId, data, labels, colors){
-  const cv=getC(canvasId); if(!cv) return;
-  const W=cv.offsetWidth||cv.parentElement.offsetWidth||400;
-  cv.width=W; cv.height=cv.height||220;
-  const ctx=cv.getContext('2d');
-  const H=cv.height;
-  ctx.clearRect(0,0,W,H);
-  const total=data.reduce((s,v)=>s+v,0);
-  const cx=W*0.38, cy=H/2, r=Math.min(cx,cy)*0.82, ri=r*0.6;
-  let angle=-Math.PI/2;
-  data.forEach((v,i)=>{
-    const sweep=v/total*2*Math.PI;
-    ctx.fillStyle=colors[i];
-    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,r,angle,angle+sweep); ctx.closePath(); ctx.fill();
-    ctx.fillStyle='rgba(11,22,40,.6)';
-    ctx.beginPath(); ctx.arc(cx,cy,ri,0,Math.PI*2); ctx.fill();
-    angle+=sweep;
-  });
-  ctx.fillStyle='#E8EDF5'; ctx.font='bold 18px Arial'; ctx.textAlign='center';
-  ctx.fillText((data[0]+data[1]).toFixed(1)+'%', cx, cy-4);
-  ctx.fillStyle='#7A93B8'; ctx.font='10px Arial';
-  ctx.fillText('AD+A', cx, cy+12);
-
-  // legend
-  const lx=W*0.68;
-  labels.forEach((lbl,i)=>{
-    const ly=H/2-(labels.length/2-i)*22+4;
-    ctx.fillStyle=colors[i]; ctx.beginPath(); ctx.roundRect(lx,ly-8,12,12,[2]); ctx.fill();
-    ctx.fillStyle='#7A93B8'; ctx.font='11px Arial'; ctx.textAlign='left';
-    ctx.fillText(lbl+' '+data[i].toFixed(1)+'%', lx+16, ly+2);
-  });
-}
-
-// ── Stacked bars (HTML) ───────────────────────────────────────────
-function stackBars(containerId, rows, type='int'){
-  const el=document.getElementById(containerId); if(!el) return;
-  el.innerHTML='';
-  rows.forEach(row=>{
-    const segs = type==='int'
-      ? [{v:row.ad,c:'s-ad',l:'AD'},{v:row.a,c:'s-a',l:'A'},{v:row.b,c:'s-b',l:'B'},{v:row.c,c:'s-c',l:'C'}]
-      : [{v:row.s,c:'s-sat',l:'Sat'},{v:row.p,c:'s-proc',l:'Pro'},{v:row.i,c:'s-ini',l:'Ini'},{v:row.pr,c:'s-prev',l:'Pre'}];
-    const pct = type==='int' ? (row.ad+row.a).toFixed(1)+'% ✓' : (row.s||0).toFixed(1)+'%';
-    const div=document.createElement('div'); div.className='stack-row';
-    const lbl=document.createElement('div'); lbl.className='stack-lbl'; lbl.textContent=row.lbl;
-    const bar=document.createElement('div'); bar.className='stack-bar';
-    segs.forEach(s=>{
-      if(!s.v||s.v<0.3) return;
-      const seg=document.createElement('div'); seg.className='stack-seg '+s.c;
-      seg.style.flex=s.v; seg.title=s.l+': '+s.v.toFixed(1)+'%';
-      if(s.v>6) seg.innerHTML='<span>'+s.v.toFixed(0)+'%</span>';
-      bar.appendChild(seg);
-    });
-    const p=document.createElement('div'); p.className='stack-pct'; p.textContent=pct;
-    div.appendChild(lbl); div.appendChild(bar); div.appendChild(p);
-    el.appendChild(div);
-  });
-}
-
-// ══ NAV ══════════════════════════════════════════════════════════
-const TITLES={overview:'Resumen General',iiee:'Por Institución',areas:'Por Área Curricular',grados:'Por Grado',erehua:'EREHUA 2025',comp:'STEAM vs No-STEAM'};
-function go(id,el){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  document.getElementById('sec-'+id).classList.add('active');
-  el.classList.add('active');
-  document.getElementById('ttitle').textContent=TITLES[id];
-  renderSection(id);
-}
-
-const rendered={};
-function renderSection(id){
-  if(rendered[id]) return;
-  rendered[id]=true;
-  requestAnimationFrame(()=>{
-    if(id==='overview')   renderOverview();
-    if(id==='areas')      renderAreas();
-    if(id==='grados')     renderGrados();
-    if(id==='erehua')     renderErehua();
-    if(id==='comp')       renderComp();
-  });
-}
-
-// ══ RENDER OVERVIEW ═══════════════════════════════════════════════
-function renderOverview(){
-  drawDonut('c-pie',[19.7,75.0,4.9,0.4],['AD','A','B','C'],['#3B82F6','#22C55E','#F59E0B','#EF4444']);
-  drawBar('c-ada', KEYS, [{
-    label:'AD+A %',
-    data:KEYS.map(k=>D[k].ad+D[k].a),
-    color:'#14A3A6'
-  }],{goal:95,hideLegend:true});
-  stackBars('sb-overview', KEYS.map(k=>({lbl:D[k].n.split('—')[0].trim(), ad:D[k].ad, a:D[k].a, b:D[k].b, c:D[k].c})));
-}
-
-// ══ RENDER IIEE DETAIL ════════════════════════════════════════════
-function selIIEE(key,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  const d=D[key];
-  const det=document.getElementById('iieeDetail');
-  det.innerHTML=`
-    <div class="kpi-grid">
-      <div class="kpi" style="--kc:#14A3A6"><div class="kpi-lbl">Total estudiantes</div><div class="kpi-val">${d.total}</div><div class="kpi-sub">4.°–6.° Grado · 3 Áreas</div></div>
-      <div class="kpi" style="--kc:var(--ad)"><div class="kpi-lbl">AD – Logro Destacado</div><div class="kpi-val">${d.ad}%</div><div class="kpi-sub">${Math.round(d.total*d.ad/100)} estudiantes</div></div>
-      <div class="kpi" style="--kc:var(--a)"><div class="kpi-lbl">A – Logrado</div><div class="kpi-val">${d.a}%</div><div class="kpi-sub">${Math.round(d.total*d.a/100)} estudiantes</div></div>
-      <div class="kpi" style="--kc:var(--b)"><div class="kpi-lbl">B – En Proceso</div><div class="kpi-val">${d.b}%</div><div class="kpi-sub">${Math.round(d.total*d.b/100)} estudiantes</div>${d.b>8?'<div class="kpi-tag tag-warn">⚠ Requiere atención</div>':''}</div>
-      <div class="kpi" style="--kc:var(--c)"><div class="kpi-lbl">C – En Inicio</div><div class="kpi-val">${d.c}%</div><div class="kpi-sub">${Math.round(d.total*d.c/100)} estudiantes</div>${d.c>1?'<div class="kpi-tag tag-alert">🔴 Alerta</div>':'<div class="kpi-tag tag-up">✓ Bajo control</div>'}</div>
-      <div class="kpi" style="--kc:var(--teal2)"><div class="kpi-lbl">AD+A (Satisfactorio)</div><div class="kpi-val">${(d.ad+d.a).toFixed(1)}%</div><div class="kpi-sub">Meta: ≥ 95%</div>${(d.ad+d.a)>=95?'<div class="kpi-tag tag-up">✓ Meta alcanzada</div>':'<div class="kpi-tag tag-warn">Debajo de meta</div>'}</div>
-    </div>
-    <div class="g2">
-      <div class="cc"><div class="cc-title">Niveles por Área Curricular</div><canvas class="cv" id="ii-area" height="220"></canvas></div>
-      <div class="cc"><div class="cc-title">Evolución %AD por Grado</div><canvas class="cv" id="ii-grado" height="220"></canvas></div>
-    </div>
-    <div class="cc">
-      <div class="cc-title">Perfil Completo por Área</div>
-      <div class="legend">
-        <div class="leg-item"><div class="leg-dot" style="background:var(--ad)"></div>AD</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--a)"></div>A</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--b)"></div>B</div>
-        <div class="leg-item"><div class="leg-dot" style="background:var(--c)"></div>C</div>
-      </div>
-      <div id="ii-stacked"></div>
-    </div>`;
-  requestAnimationFrame(()=>{
-    const areas=Object.keys(d.ar);
-    drawBar('ii-area', areas, [
-      {label:'AD',data:areas.map(a=>d.ar[a].ad),color:'#3B82F6'},
-      {label:'A', data:areas.map(a=>d.ar[a].a), color:'#22C55E'},
-      {label:'B', data:areas.map(a=>d.ar[a].b), color:'#F59E0B'},
-      {label:'C', data:areas.map(a=>d.ar[a].c), color:'#EF4444'},
-    ]);
-    const gKeys=Object.keys(d.gr);
-    drawLine('ii-grado', gKeys, [
-      {label:'%AD',data:gKeys.map(g=>d.gr[g].ad),color:'#3B82F6'},
-      {label:'%C', data:gKeys.map(g=>d.gr[g].c), color:'#EF4444'},
-    ]);
-    stackBars('ii-stacked', areas.map(a=>({lbl:a, ad:d.ar[a].ad, a:d.ar[a].a, b:d.ar[a].b, c:d.ar[a].c})));
-  });
-}
-
-// ══ RENDER AREAS ═════════════════════════════════════════════════
-function renderAreas(){
-  const areas=['Mat','Com','CyT'];
-  const aColors=['#3B82F6','#22C55E','#14A3A6'];
-  areas.forEach((ar,idx)=>{
-    drawBar('c-'+ar.toLowerCase().replace('y','yt').replace('at','at').replace('om','om'),
-      KEYS,[{label:'%AD',data:KEYS.map(k=>D[k].ar[ar].ad),color:aColors[idx]}],{hideLegend:true});
-  });
-  // grouped AD+A
-  drawBar('c-ada2', KEYS, areas.map((ar,i)=>({
-    label:ar, data:KEYS.map(k=>D[k].ar[ar].ad+D[k].ar[ar].a), color:aColors[i]
-  })),{goal:95});
-  // stacked bars per area
-  const areaRows=[];
-  KEYS.forEach(k=>areas.forEach(ar=>areaRows.push({lbl:k.slice(2)+' '+ar, ad:D[k].ar[ar].ad, a:D[k].ar[ar].a, b:D[k].ar[ar].b, c:D[k].ar[ar].c})));
-  stackBars('sb-areas', areaRows);
-}
-
-// ══ RENDER GRADOS ════════════════════════════════════════════════
-function renderGrados(){
-  const gkeys=['4.°','5.°','6.°'];
-  drawLine('c-gado', gkeys, KEYS.map((k,i)=>({
-    label:k, data:gkeys.map(g=>D[k].gr[g].ad), color:COLS[i]
-  })));
-  drawBar('c-gc', KEYS, gkeys.map((g,i)=>({
-    label:g, data:KEYS.map(k=>D[k].gr[g].c), color:['#60A5FA','#EF4444','#991B1B'][i]
-  })));
-  const rows=[];
-  KEYS.forEach(k=>gkeys.forEach(g=>rows.push({lbl:k.slice(2)+' '+g, ad:D[k].gr[g].ad, a:D[k].gr[g].a, b:D[k].gr[g].b, c:D[k].gr[g].c})));
-  stackBars('sb-grados', rows);
-}
-
-// ══ RENDER EREHUA ════════════════════════════════════════════════
-function renderErehua(){
-  const areas=['mat','com','cyt'];
-  const aLbls=['Matemática','Comunicación','CyT'];
-  const aClrs=['#3B82F6','#22C55E','#14A3A6'];
-  drawBar('c-er4', KEYS, areas.map((ar,i)=>({
-    label:aLbls[i], data:KEYS.map(k=>ER[k].g4[ar].s), color:aClrs[i]
-  })),{refLine:27.7});
-  drawBar('c-er6', KEYS, areas.map((ar,i)=>({
-    label:aLbls[i], data:KEYS.map(k=>ER[k].g6[ar].s), color:aClrs[i]
-  })),{refLine:11.5});
-  // 4° — 3 áreas
-  stackBars('sb-er4-mat', KEYS.map(k=>({lbl:k, s:ER[k].g4.mat.s, p:ER[k].g4.mat.p, i:ER[k].g4.mat.i, pr:ER[k].g4.mat.pr})), 'er');
-  stackBars('sb-er4-com', KEYS.map(k=>({lbl:k, s:ER[k].g4.com.s, p:ER[k].g4.com.p, i:ER[k].g4.com.i, pr:ER[k].g4.com.pr})), 'er');
-  stackBars('sb-er4-cyt', KEYS.map(k=>({lbl:k, s:ER[k].g4.cyt.s, p:ER[k].g4.cyt.p, i:ER[k].g4.cyt.i, pr:ER[k].g4.cyt.pr})), 'er');
-  // 6° — 3 áreas
-  stackBars('sb-er6-mat', KEYS.map(k=>({lbl:k, s:ER[k].g6.mat.s, p:ER[k].g6.mat.p, i:ER[k].g6.mat.i, pr:ER[k].g6.mat.pr})), 'er');
-  stackBars('sb-er6-com', KEYS.map(k=>({lbl:k, s:ER[k].g6.com.s, p:ER[k].g6.com.p, i:ER[k].g6.com.i, pr:ER[k].g6.com.pr})), 'er');
-  stackBars('sb-er6-cyt', KEYS.map(k=>({lbl:k, s:ER[k].g6.cyt.s, p:ER[k].g6.cyt.p, i:ER[k].g6.cyt.i, pr:ER[k].g6.cyt.pr})), 'er');
-}
-
-function selErGrade(grade, btn){
-  document.querySelectorAll('#er-grade-tabs .tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('er-g4-panel').style.display = grade==='g4' ? 'block' : 'none';
-  document.getElementById('er-g6-panel').style.display = grade==='g6' ? 'block' : 'none';
-}
-
-// ══ RENDER COMP ══════════════════════════════════════════════════
-function renderComp(){
-  const allLabels=[...KEYS,...COMP.map(c=>c.id)];
-  const steamClrs=KEYS.map((_,i)=>COLS[i]);
-  const noClrs=COMP.map(()=>'rgba(239,68,68,.65)');
-  const allClrs=[...steamClrs,...noClrs];
-  drawBar('c-cad', allLabels, [{label:'%AD', data:[...KEYS.map(k=>D[k].ad),...COMP.map(c=>c.ad)], color:'dummy'}], {hideLegend:true});
-  // recolor per bar - workaround: draw manually
-  (() => {
-    const cv=getC('c-cad'); if(!cv) return;
-    const W=cv.offsetWidth||600; cv.width=W;
-    const H=cv.height||250;
-    const ctx=cv.getContext('2d');
-    ctx.clearRect(0,0,W,H);
-    const pad={t:20,r:20,b:50,l:48};
-    const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
-    const n=allLabels.length; const maxV=30;
-    ctx.strokeStyle='rgba(255,255,255,.05)'; ctx.lineWidth=1;
-    for(let i=0;i<=5;i++){const y=pad.t+cH-(i/5)*cH;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cW,y);ctx.stroke();ctx.fillStyle='#7A93B8';ctx.font='10px Arial';ctx.textAlign='right';ctx.fillText((maxV*i/5).toFixed(0)+'%',pad.l-4,y+3);}
-    const vals=[...KEYS.map(k=>D[k].ad),...COMP.map(c=>c.ad)];
-    const bW=cW/n*0.7; const sp=cW/n;
-    allLabels.forEach((lbl,i)=>{
-      const v=vals[i]; const bH=v/maxV*cH;
-      const x=pad.l+i*sp+sp*0.15;
-      ctx.fillStyle=allClrs[i];
-      ctx.beginPath();ctx.roundRect(x,pad.t+cH-bH,bW,bH,[3,3,0,0]);ctx.fill();
-      if(bH>14){ctx.fillStyle='rgba(255,255,255,.85)';ctx.font='bold 9px Arial';ctx.textAlign='center';ctx.fillText(v.toFixed(1)+'%',x+bW/2,pad.t+cH-bH+11);}
-      ctx.fillStyle='#7A93B8';ctx.font='10px Arial';ctx.textAlign='center';ctx.fillText(lbl,x+bW/2,pad.t+cH+14);
-    });
-    // separator line
-    const sx=pad.l+KEYS.length*sp-sp*0.1;
-    ctx.strokeStyle='rgba(255,255,255,.15)';ctx.setLineDash([4,3]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(sx,pad.t);ctx.lineTo(sx,pad.t+cH+4);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle='rgba(255,255,255,.3)';ctx.font='10px Arial';ctx.textAlign='center';
-    ctx.fillText('STEAM',pad.l+KEYS.length*sp/2,pad.t-4);
-    ctx.fillText('No-STEAM',pad.l+KEYS.length*sp+COMP.length*sp/2,pad.t-4);
-  })();
-
-  // %C chart
-  (() => {
-    const cv=getC('c-cc'); if(!cv) return;
-    const W=cv.offsetWidth||600; cv.width=W;
-    const H=cv.height||250;
-    const ctx=cv.getContext('2d'); ctx.clearRect(0,0,W,H);
-    const pad={t:20,r:20,b:50,l:48};
-    const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
-    const n=allLabels.length; const maxV=8;
-    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
-    for(let i=0;i<=4;i++){const y=pad.t+cH-(i/4)*cH;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cW,y);ctx.stroke();ctx.fillStyle='#7A93B8';ctx.font='10px Arial';ctx.textAlign='right';ctx.fillText((maxV*i/4).toFixed(0)+'%',pad.l-4,y+3);}
-    const vals=[...KEYS.map(k=>D[k].c),...COMP.map(c=>c.c)];
-    const sp=cW/n; const bW=sp*0.7;
-    allLabels.forEach((lbl,i)=>{
-      const v=vals[i]; const bH=Math.max(2,v/maxV*cH);
-      const x=pad.l+i*sp+sp*0.15;
-      ctx.fillStyle=allClrs[i];
-      ctx.beginPath();ctx.roundRect(x,pad.t+cH-bH,bW,bH,[3,3,0,0]);ctx.fill();
-      if(bH>12){ctx.fillStyle='rgba(255,255,255,.85)';ctx.font='bold 9px Arial';ctx.textAlign='center';ctx.fillText(v.toFixed(1)+'%',x+bW/2,pad.t+cH-bH+11);}
-      ctx.fillStyle='#7A93B8';ctx.font='10px Arial';ctx.textAlign='center';ctx.fillText(lbl,x+bW/2,pad.t+cH+14);
-    });
-    const sx=pad.l+KEYS.length*sp-sp*0.1;
-    ctx.strokeStyle='rgba(255,255,255,.15)';ctx.setLineDash([4,3]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(sx,pad.t);ctx.lineTo(sx,pad.t+cH+4);ctx.stroke();ctx.setLineDash([]);
-  })();
-
-  // stacked comp
-  const compRows=[
-    ...KEYS.map(k=>({lbl:D[k].n.split('—')[0].trim(), ad:D[k].ad, a:D[k].a, b:D[k].b, c:D[k].c})),
-    ...COMP.map(c=>({lbl:c.id, ad:c.ad, a:c.a, b:c.b, c:c.c}))
-  ];
-  stackBars('sb-comp', compRows);
-}
-
-// ══ CHART ID HELPERS ═════════════════════════════════════════════
-// Fix area chart IDs
-const areaIdMap={'Mat':'c-mat','Com':'c-com','CyT':'c-cyt'};
-const _origRenderAreas=renderAreas;
-// Patch to use correct IDs
-window.renderAreas = function(){
-  const areas=['Mat','Com','CyT'];
-  const aColors=['#3B82F6','#22C55E','#14A3A6'];
-  const ids=['c-mat','c-com','c-cyt'];
-  areas.forEach((ar,idx)=>drawBar(ids[idx],KEYS,[{label:'%AD',data:KEYS.map(k=>D[k].ar[ar].ad),color:aColors[idx]}],{hideLegend:true}));
-  drawBar('c-ada2',KEYS,areas.map((ar,i)=>({label:ar,data:KEYS.map(k=>D[k].ar[ar].ad+D[k].ar[ar].a),color:aColors[i]})),{goal:95});
-  const areaRows=[];
-  KEYS.forEach(k=>areas.forEach(ar=>areaRows.push({lbl:k.slice(2)+' '+ar,ad:D[k].ar[ar].ad,a:D[k].ar[ar].a,b:D[k].ar[ar].b,c:D[k].ar[ar].c})));
-  stackBars('sb-areas',areaRows);
-};
-
-// ══ INIT ═════════════════════════════════════════════════════════
-window.addEventListener('load',()=>{
-  // Resize canvases to parent width before drawing
-  document.querySelectorAll('.cv').forEach(cv=>{
-    cv.width=cv.parentElement.offsetWidth||600;
-  });
-  renderOverview();
-  selIIEE('37001',document.querySelector('.tab.active'));
-  rendered['overview']=true;
-  rendered['iiee']=true;
-});
-
-// Redraw on resize
-let resizeT;
-window.addEventListener('resize',()=>{
-  clearTimeout(resizeT);
-  resizeT=setTimeout(()=>{
-    Object.keys(rendered).forEach(k=>{rendered[k]=false;});
-    renderSection(document.querySelector('.section.active').id.replace('sec-',''));
-  },200);
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if(e.key === 'ArrowRight') navigate(1);
+  if(e.key === 'ArrowLeft')  navigate(-1);
 });
 </script>
 </body>
